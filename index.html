@@ -10,7 +10,7 @@
 [data-theme="dark"]{--white:#1E1E1E;--gray-light:#2C2C2C;--text:#FFF}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Segoe UI',Arial,sans-serif;background:var(--gray-light);color:var(--text);min-height:100vh}
-.header{background:var(--primary);color:#fff;position:sticky;top:0;z-index:1000}
+.header{background:var(--primary);color:#fff;position:sticky;top:0;z-index:1000;box-shadow:0 2px 15px rgba(0,0,0,0.2)}
 .header-top{background:var(--primary-dark);padding:6px 15px;display:flex;justify-content:space-between;font-size:12px;flex-wrap:wrap;gap:5px}
 .header-main{display:flex;align-items:center;justify-content:space-between;padding:10px 15px;max-width:1200px;margin:auto;flex-wrap:wrap;gap:10px}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-weight:700;font-size:18px;cursor:pointer}
@@ -18,7 +18,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--gray-light);color:
 .btn{padding:8px 16px;border:none;border-radius:25px;cursor:pointer;font-weight:600;font-size:13px;transition:.3s;white-space:nowrap;display:inline-flex;align-items:center;gap:5px}
 .btn:hover{transform:translateY(-2px)}
 .btn-white{background:#fff;color:var(--primary)}
-.btn-outline{background:0 0;border:2px solid #fff;color:#fff}
+.btn-outline{background:transparent;border:2px solid #fff;color:#fff}
 .btn-green{background:var(--primary);color:#fff;width:100%}
 .btn-red{background:#DC3545;color:#fff;width:100%;margin-top:8px}
 .hero{background:linear-gradient(135deg,var(--primary),var(--primary-dark));padding:30px 15px;text-align:center;color:#fff}
@@ -41,12 +41,13 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--gray-light);color:
 .ads-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:15px}
 .ad-card{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:.3s;position:relative}
 .ad-card:hover{transform:translateY(-3px);box-shadow:0 5px 20px rgba(0,0,0,0.15)}
-.ad-image{width:100%;height:180px;object-fit:cover;background:var(--gray);display:flex;align-items:center;justify-content:center;font-size:50px;color:#999}
+.ad-image{width:100%;height:180px;background:var(--gray);display:flex;align-items:center;justify-content:center;overflow:hidden}
 .ad-image img{width:100%;height:100%;object-fit:cover}
+.ad-image .no-img{font-size:50px}
 .ad-content{padding:12px}
 .ad-title{font-weight:700;margin-bottom:5px;font-size:14px}
 .ad-price{color:var(--primary);font-weight:800;font-size:17px;margin-bottom:6px}
-.ad-meta{font-size:11px;color:#666;display:flex;justify-content:space-between}
+.ad-meta{font-size:11px;color:#666;display:flex;justify-content:space-between;flex-wrap:wrap;gap:5px}
 .fav-btn{position:absolute;top:8px;right:8px;background:#fff;border:none;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px;box-shadow:0 2px 5px rgba(0,0,0,0.2);z-index:10}
 .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:2000;overflow-y:auto;padding:15px}
 .modal.active{display:flex;align-items:center;justify-content:center}
@@ -54,13 +55,11 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--gray-light);color:
 @keyframes slideUp{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
 .form-group{margin-bottom:12px}
 .form-group label{display:block;margin-bottom:4px;font-weight:600;font-size:13px}
-.form-group input,.form-group select,.form-group textarea{width:100%;padding:10px;border:2px solid var(--gray);border-radius:8px;font-size:14px;outline:0}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:10px;border:2px solid var(--gray);border-radius:8px;font-size:14px;outline:0;background:var(--white);color:var(--text)}
 .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--primary)}
 .form-group input[type="file"]{padding:8px;border:2px dashed var(--gray);background:var(--gray-light);cursor:pointer}
 .image-preview{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-.image-preview img{width:80px;height:80px;object-fit:cover;border-radius:6px;border:2px solid var(--gray)}
-.image-preview .img-item{position:relative}
-.image-preview .img-item button{position:absolute;top:-5px;right:-5px;background:red;color:#fff;border:none;border-radius:50%;width:20px;height:20px;font-size:10px;cursor:pointer}
+.image-preview img{width:70px;height:70px;object-fit:cover;border-radius:6px;border:2px solid var(--gray)}
 .toast-container{position:fixed;bottom:15px;right:15px;z-index:3000}
 .toast{padding:10px 18px;border-radius:8px;color:#fff;font-weight:600;font-size:13px;margin-top:5px;animation:slideIn .3s}
 .toast-success{background:#28A745}
@@ -73,7 +72,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--gray-light);color:
 .spinner{width:35px;height:35px;border:3px solid #ddd;border-top-color:var(--primary);border-radius:50%;animation:spin .8s infinite linear;margin:0 auto 10px}
 @keyframes spin{to{transform:rotate(360deg)}}
 .empty-state{text-align:center;padding:30px;color:#888}
-.img-detail{width:100%;max-height:300px;object-fit:cover;border-radius:var(--radius);margin-bottom:15px}
+.detail-img{width:100%;max-height:300px;object-fit:cover;border-radius:8px;margin-bottom:10px}
 @media(max-width:768px){.ads-grid{grid-template-columns:1fr}.categories-grid{grid-template-columns:repeat(3,1fr)}}
 [dir="rtl"]{direction:rtl}
 </style>
@@ -113,8 +112,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--gray-light);color:
 <h2 class="section-title">📂 Catégories</h2>
 <div class="categories-grid" id="categoriesGrid"></div>
 <div class="tabs">
-<div class="tab active" onclick="loadAds('recent')">🕐 Récents</div>
-<div class="tab" onclick="loadAds('popular')">⭐ Populaires</div>
+<div class="tab active" onclick="loadAds()">🕐 Toutes les annonces</div>
 <div class="tab" onclick="showFavorites()">❤️ Favoris</div>
 <div class="tab" onclick="showMyAds()">📋 Mes annonces</div>
 </div>
@@ -123,7 +121,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--gray-light);color:
 
 <footer class="footer">© 2026 SOGE ZABANA RH - Tous droits réservés</footer>
 
-<!-- MODAL LOGIN -->
+<!-- MODALS -->
 <div class="modal" id="loginModal"><div class="modal-content">
 <h2>Connexion</h2>
 <div class="form-group"><label>Email</label><input type="text" id="loginEmail"></div>
@@ -133,7 +131,6 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--gray-light);color:
 <button class="btn btn-red" onclick="closeModal('loginModal')">Fermer</button>
 </div></div>
 
-<!-- MODAL REGISTER -->
 <div class="modal" id="registerModal"><div class="modal-content">
 <h2>Inscription</h2>
 <div class="form-group"><label>Nom *</label><input type="text" id="regNom"></div>
@@ -146,31 +143,29 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--gray-light);color:
 <button class="btn btn-red" onclick="closeModal('registerModal')">Fermer</button>
 </div></div>
 
-<!-- MODAL ADD AD -->
 <div class="modal" id="addAdModal"><div class="modal-content">
 <h2>📢 Déposer une annonce</h2>
 <div class="form-group"><label>Catégorie *</label><select id="adCategorie"></select></div>
-<div class="form-group"><label>Titre *</label><input type="text" id="adTitre" placeholder="Titre de votre annonce"></div>
-<div class="form-group"><label>Description</label><textarea id="adDescription" rows="3" placeholder="Décrivez votre annonce..."></textarea></div>
+<div class="form-group"><label>Titre *</label><input type="text" id="adTitre" placeholder="Titre de l'annonce"></div>
+<div class="form-group"><label>Description</label><textarea id="adDescription" rows="3" placeholder="Description..."></textarea></div>
 <div class="form-group"><label>Prix (DA)</label><input type="number" id="adPrix" placeholder="0 = Gratuit"></div>
 <div class="form-group"><label>Téléphone</label><input type="tel" id="adPhone" placeholder="05XXXXXXXX"></div>
 <div class="form-group">
-<label>📸 Photos (max 5)</label>
+<label>📸 Photos</label>
 <input type="file" id="adPhotos" accept="image/*" multiple onchange="previewImages()">
 <div class="image-preview" id="imagePreview"></div>
 </div>
-<button class="btn btn-green" onclick="createAd()">✅ Publier l'annonce</button>
+<button class="btn btn-green" onclick="createAd()">✅ Publier</button>
 <button class="btn btn-red" onclick="closeModal('addAdModal')">Fermer</button>
 </div></div>
 
-<!-- MODAL AD DETAIL -->
 <div class="modal" id="adDetailModal"><div class="modal-content" id="adDetailContent"></div></div>
-
 <div class="toast-container" id="toastContainer"></div>
 
 <script>
-// CONFIGURATION
-const API_URL='https://script.google.com/macros/s/AKfycbx_G_pLDxOadmLo14Zn2nRoveuA3LTV-2iCrFvOEtJ2mMRhw0gdZce7G4sEVr55MlFT/exec';
+// ✅ URL API OFFICIELLE
+const API_URL='https://script.google.com/macros/s/AKfycbyaGmtSWvzrXnKBPiuFJ3kmD0ggEQRfhAPL2LjidxbEUkO3FYPQd10cPP5XexNmOTuL/exec';
+
 const CATEGORIES=[
 {id:'Immobilier',icon:'🏠',nameFR:'Immobilier',nameAR:'عقارات'},
 {id:'Véhicules',icon:'🚗',nameFR:'Véhicules',nameAR:'سيارات'},
@@ -186,145 +181,69 @@ const CATEGORIES=[
 let currentUser=JSON.parse(localStorage.getItem('soge_user'))||null;
 let currentLang=localStorage.getItem('soge_lang')||'fr';
 let currentTheme=localStorage.getItem('soge_theme')||'light';
-let currentAds=[],userFavorites=JSON.parse(localStorage.getItem('soge_favs'))||[];
-let selectedImages=[];
+let currentAds=[],userFavorites=JSON.parse(localStorage.getItem('soge_favs'))||[],selectedImages=[];
 
-document.addEventListener('DOMContentLoaded',()=>{
-applyTheme();
-applyLang();
-loadCategories();
-loadAds('recent');
-updateUI();
-});
+document.addEventListener('DOMContentLoaded',()=>{applyTheme();loadCategories();loadAds();updateUI()});
 
-// API
-async function api(action,params={}){
+// API Helper
+async function api(action,params={},method='GET'){
 try{
+if(method==='POST'){
+let r=await fetch(API_URL,{method:'POST',body:JSON.stringify({action,...params})});
+return await r.json();
+}else{
 let url=new URL(API_URL);
 url.searchParams.append('action',action);
 Object.keys(params).forEach(k=>url.searchParams.append(k,params[k]));
 let r=await fetch(url);
 return await r.json();
-}catch(e){
-showToast('Erreur connexion','error');
-return null;
 }
+}catch(e){showToast('Erreur connexion','error');return null;}
 }
 
-// PREVIEW IMAGES
+// Preview images
 function previewImages(){
 const files=document.getElementById('adPhotos').files;
 const preview=document.getElementById('imagePreview');
-selectedImages=[];
-preview.innerHTML='';
-
+selectedImages=[];preview.innerHTML='';
 for(let i=0;i<Math.min(files.length,5);i++){
-const file=files[i];
-selectedImages.push(file);
+selectedImages.push(files[i]);
 const reader=new FileReader();
-reader.onload=function(e){
-const div=document.createElement('div');
-div.className='img-item';
-div.innerHTML=`
-<img src="${e.target.result}" alt="Photo ${i+1}">
-<button onclick="removeImage(${i})">✕</button>
-`;
-preview.appendChild(div);
-};
-reader.readAsDataURL(file);
+reader.onload=function(e){preview.innerHTML+=`<img src="${e.target.result}" alt="Photo">`;};
+reader.readAsDataURL(files[i]);
 }
 }
 
-function removeImage(index){
-selectedImages.splice(index,1);
-refreshPreview();
-}
+function fileToBase64(file){return new Promise(r=>{let a=new FileReader();a.onload=e=>r(e.target.result);a.readAsDataURL(file);});}
 
-function refreshPreview(){
-const preview=document.getElementById('imagePreview');
-preview.innerHTML='';
-selectedImages.forEach((file,i)=>{
-const reader=new FileReader();
-reader.onload=function(e){
-const div=document.createElement('div');
-div.className='img-item';
-div.innerHTML=`
-<img src="${e.target.result}" alt="Photo ${i+1}">
-<button onclick="removeImage(${i})">✕</button>
-`;
-preview.appendChild(div);
-};
-reader.readAsDataURL(file);
-});
-}
-
-// CONVERT IMAGE TO BASE64
-function fileToBase64(file){
-return new Promise((resolve,reject)=>{
-const reader=new FileReader();
-reader.onload=()=>resolve(reader.result);
-reader.onerror=reject;
-reader.readAsDataURL(file);
-});
-}
-
-// AUTH
+// Auth
 function login(){
-let e=document.getElementById('loginEmail').value.trim();
-let p=document.getElementById('loginPassword').value;
+let e=document.getElementById('loginEmail').value.trim(),p=document.getElementById('loginPassword').value;
 if(!e||!p)return showToast('Champs requis','error');
 api('login',{email:e,password:p}).then(r=>{
-if(r&&r.success){
-currentUser=r.user;
-localStorage.setItem('soge_user',JSON.stringify(currentUser));
-closeModal('loginModal');
-showToast('✅ Connecté!','success');
-updateUI();
-loadAds('recent');
-}else{
-showToast(r?.error||'Email ou mot de passe incorrect','error');
-}
+r&&r.success?(currentUser=r.user,localStorage.setItem('soge_user',JSON.stringify(currentUser)),closeModal('loginModal'),showToast('✅ Connecté!','success'),updateUI(),loadAds()):showToast(r?.error||'Erreur','error');
 });
 }
 
 function register(){
-let n=document.getElementById('regNom').value.trim();
-let p=document.getElementById('regPrenom').value.trim();
-let e=document.getElementById('regEmail').value.trim();
-let ph=document.getElementById('regPhone').value.trim();
-let pw=document.getElementById('regPassword').value;
-if(!n||!p||!e||!pw)return showToast('Champs requis','error');
+let n=document.getElementById('regNom').value.trim(),p=document.getElementById('regPrenom').value.trim(),e=document.getElementById('regEmail').value.trim(),ph=document.getElementById('regPhone').value.trim(),pw=document.getElementById('regPassword').value;
+if(!n||!e||!pw)return showToast('Champs requis','error');
 api('register',{nom:n,prenom:p,email:e,phone:ph,password:pw}).then(r=>{
-if(r&&r.success){
-closeModal('registerModal');
-showToast('✅ Compte créé!','success');
-openLogin();
-}else{
-showToast(r?.error||'Erreur','error');
-}
+r&&r.success?(closeModal('registerModal'),showToast('✅ Compte créé!','success'),openLogin()):showToast(r?.error||'Erreur','error');
 });
 }
 
-function logout(){
-currentUser=null;
-localStorage.removeItem('soge_user');
-updateUI();
-showHome();
-showToast('Déconnecté','info');
-}
+function logout(){currentUser=null;localStorage.removeItem('soge_user');updateUI();showHome();showToast('Déconnecté','info');}
 
-// ADS
-function loadAds(t='recent'){
+// Ads
+function loadAds(){
 document.getElementById('adsContainer').innerHTML='<div class="loading"><div class="spinner"></div></div>';
 api('getAds',{limit:50}).then(r=>{
 if(r&&Array.isArray(r)){
-currentAds=r;
-displayAds(r);
+currentAds=r;displayAds(r);
 document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-document.getElementById('tabRecent').classList.add('active');
-}else{
-document.getElementById('adsContainer').innerHTML='<div class="empty-state">Aucune annonce</div>';
-}
+document.querySelector('.tab').classList.add('active');
+}else{document.getElementById('adsContainer').innerHTML='<div class="empty-state">Aucune annonce</div>';}
 });
 }
 
@@ -332,99 +251,38 @@ function displayAds(a){
 let c=document.getElementById('adsContainer');
 if(!a||a.length===0)return c.innerHTML='<div class="empty-state">📭 Aucune annonce</div>';
 c.innerHTML=a.map(ad=>{
-let p=Number(ad.Prix)||0,fav=userFavorites.includes(ad.ID);
-let imgHTML='';
-if(ad.Photos){
-const photos=ad.Photos.split(',');
-if(photos[0]&&photos[0].trim()){
-imgHTML=`<img src="${photos[0].trim()}" alt="${ad.Titre||''}" style="width:100%;height:180px;object-fit:cover;">`;
-}else{
-imgHTML=getCatIcon(ad.Categorie);
-}
-}else{
-imgHTML=getCatIcon(ad.Categorie);
-}
+let p=Number(ad.Prix)||0,fav=userFavorites.includes(ad.ID),imgHTML='';
+if(ad.Photos){let imgs=ad.Photos.split(',');if(imgs[0]&&imgs[0].trim())imgHTML=`<img src="${imgs[0].trim()}" alt="${ad.Titre||''}">`;}
+if(!imgHTML)imgHTML=`<span class="no-img">${(CATEGORIES.find(x=>x.id===ad.Categorie)||{icon:'📦'}).icon}</span>`;
 return`<div class="ad-card" onclick="showAdDetail('${ad.ID}')"><button class="fav-btn" onclick="event.stopPropagation();toggleFav('${ad.ID}')">${fav?'❤️':'🤍'}</button><div class="ad-image">${imgHTML}</div><div class="ad-content"><div class="ad-title">${ad.Titre||'Sans titre'}</div><div class="ad-price">💰 ${p>0?p.toLocaleString('fr-DZ')+' DA':'Gratuit'}</div><div class="ad-meta"><span>📂 ${ad.Categorie||'N/A'}</span><span>📅 ${ad.DatePub?new Date(ad.DatePub).toLocaleDateString('fr-DZ'):'N/A'}</span></div></div></div>`
 }).join('');
 }
 
-function getCatIcon(c){let x=CATEGORIES.find(y=>y.id===c);return x?`<span style="font-size:50px">${x.icon}</span>`:'📦'}
-
 function showAdDetail(id){
-let ad=currentAds.find(a=>a.ID===id);
-if(!ad)return;
+let ad=currentAds.find(a=>a.ID===id);if(!ad)return;
 api('incrementViews',{adID:id});
-let m=document.getElementById('adDetailModal'),ct=document.getElementById('adDetailContent'),p=Number(ad.Prix)||0;
-
-let photosHTML='';
-if(ad.Photos){
-const photos=ad.Photos.split(',');
-photos.forEach(ph=>{
-if(ph.trim()){
-photosHTML+=`<img src="${ph.trim()}" class="img-detail" alt="Photo">`;
-}
-});
-}
-
-ct.innerHTML=`
-<h2>${ad.Titre||'Sans titre'}</h2>
-${photosHTML}
-<div style="font-size:24px;color:var(--primary);font-weight:800;margin:10px 0">💰 ${p>0?p.toLocaleString('fr-DZ')+' DA':'Gratuit'}</div>
-<p><strong>📂 Catégorie :</strong> ${ad.Categorie||'N/A'}</p>
-<p><strong>📝 Description :</strong> ${ad.Description||'Aucune'}</p>
-<p><strong>📞 Téléphone :</strong> ${ad.Phone||'N/A'}</p>
-<p><strong>📍 Localisation :</strong> ${ad.GPS||'Misserghine'}</p>
-<p><strong>📅 Publié le :</strong> ${ad.DatePub?new Date(ad.DatePub).toLocaleDateString('fr-DZ'):'N/A'}</p>
-<p><strong>👁️ Vues :</strong> ${ad.Vues||0}</p>
-<button class="btn btn-red" onclick="closeModal('adDetailModal')">Fermer</button>
-`;
+let m=document.getElementById('adDetailModal'),ct=document.getElementById('adDetailContent'),p=Number(ad.Prix)||0,imgsHTML='';
+if(ad.Photos){ad.Photos.split(',').forEach(ph=>{if(ph.trim())imgsHTML+=`<img src="${ph.trim()}" class="detail-img" alt="Photo">`;});}
+ct.innerHTML=`<h2>${ad.Titre||'Sans titre'}</h2>${imgsHTML}<div style="font-size:24px;color:var(--primary);font-weight:800;margin:10px 0">💰 ${p>0?p.toLocaleString('fr-DZ')+' DA':'Gratuit'}</div><p><strong>📂</strong> ${ad.Categorie}</p><p><strong>📝</strong> ${ad.Description||'Aucune'}</p><p><strong>📞</strong> ${ad.Phone||'N/A'}</p><p><strong>📅</strong> ${ad.DatePub?new Date(ad.DatePub).toLocaleDateString('fr-DZ'):'N/A'}</p><p><strong>👁️</strong> ${ad.Vues||0} vues</p><button class="btn btn-red" onclick="closeModal('adDetailModal')">Fermer</button>`;
 m.classList.add('active');
 }
 
 async function createAd(){
 if(!currentUser)return closeModal('addAdModal'),openLogin();
-let c=document.getElementById('adCategorie').value;
-let t=document.getElementById('adTitre').value.trim();
-let d=document.getElementById('adDescription').value.trim();
-let p=document.getElementById('adPrix').value||0;
-let ph=document.getElementById('adPhone').value.trim();
-
+let c=document.getElementById('adCategorie').value,t=document.getElementById('adTitre').value.trim(),d=document.getElementById('adDescription').value.trim(),p=document.getElementById('adPrix').value||0,ph=document.getElementById('adPhone').value.trim();
 if(!c||!t)return showToast('Catégorie et titre requis','error');
-
-// Convert images to base64
-let photosStr='';
+let photosUrls=[];
 if(selectedImages.length>0){
-showToast('📸 Conversion des images...','info');
-const base64Images=[];
-for(const img of selectedImages){
-const base64=await fileToBase64(img);
-base64Images.push(base64);
+showToast('📸 Upload images sur Drive...','info');
+for(let img of selectedImages){
+let b64=await fileToBase64(img);
+let r=await api('uploadImage',{image:b64},'POST');
+if(r&&r.success)photosUrls.push(r.url);
 }
-photosStr=base64Images.join(',');
 }
-
-api('createAd',{
-userID:currentUser.ID,
-categorie:c,
-titre:t,
-description:d,
-prix:p,
-phone:ph,
-photos:photosStr
-}).then(r=>{
-if(r&&r.success){
-closeModal('addAdModal');
-selectedImages=[];
-document.getElementById('imagePreview').innerHTML='';
-document.getElementById('adPhotos').value='';
-document.getElementById('adTitre').value='';
-document.getElementById('adDescription').value='';
-document.getElementById('adPrix').value='';
-showToast('✅ Annonce publiée avec photos!','success');
-loadAds('recent');
-}else{
-showToast(r?.error||'Erreur','error');
-}
+api('createAd',{userID:currentUser.ID,categorie:c,titre:t,description:d,prix:p,phone:ph,photos:photosUrls.join(',')}).then(r=>{
+if(r&&r.success){closeModal('addAdModal');selectedImages=[];document.getElementById('imagePreview').innerHTML='';document.getElementById('adPhotos').value='';showToast('✅ Publié!','success');loadAds();}
+else showToast(r?.error||'Erreur','error');
 });
 }
 
@@ -440,16 +298,13 @@ function showMyAds(){
 if(!currentUser)return showToast('Connectez-vous','error');
 document.getElementById('adsContainer').innerHTML='<div class="loading"><div class="spinner"></div></div>';
 document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-document.getElementById('tabMyAds').classList.add('active');
-api('getUserAds',{userID:currentUser.ID}).then(r=>{
-r&&Array.isArray(r)?(currentAds=r,displayAds(r)):document.getElementById('adsContainer').innerHTML='<div class="empty-state">Pas d\'annonces</div>';
-});
+api('getUserAds',{userID:currentUser.ID}).then(r=>{r&&Array.isArray(r)?(currentAds=r,displayAds(r)):document.getElementById('adsContainer').innerHTML='<div class="empty-state">Pas d\'annonces</div>';});
 }
 
 function toggleFav(id){
 if(!currentUser)return showToast('Connectez-vous','error');
 api('toggleFavorite',{userID:currentUser.ID,adID:id}).then(r=>{
-if(r&&r.success)r.action==='added'?userFavorites.push(id):userFavorites=userFavorites.filter(x=>x!==id),localStorage.setItem('soge_favs',JSON.stringify(userFavorites)),displayAds(currentAds),showToast(r.action==='added'?'❤️ Ajouté':'🤍 Retiré','success');
+if(r&&r.success){r.action==='added'?userFavorites.push(id):userFavorites=userFavorites.filter(x=>x!==id);localStorage.setItem('soge_favs',JSON.stringify(userFavorites));displayAds(currentAds);}
 });
 }
 
@@ -457,38 +312,29 @@ function showFavorites(){
 if(!currentUser)return showToast('Connectez-vous','error');
 document.getElementById('adsContainer').innerHTML='<div class="loading"><div class="spinner"></div></div>';
 document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-document.getElementById('tabFav').classList.add('active');
-api('getFavorites',{userID:currentUser.ID}).then(r=>{
-r&&Array.isArray(r)?(currentAds=r,displayAds(r)):document.getElementById('adsContainer').innerHTML='<div class="empty-state">Pas de favoris</div>';
-});
+api('getFavorites',{userID:currentUser.ID}).then(r=>{r&&Array.isArray(r)?(currentAds=r,displayAds(r)):document.getElementById('adsContainer').innerHTML='<div class="empty-state">Pas de favoris</div>';});
 }
 
 // UI
-function updateUI(){
-let l=document.getElementById('btnLogin'),o=document.getElementById('btnLogout'),a=document.getElementById('btnAddAd');
-currentUser?(l.classList.add('hidden'),o.classList.remove('hidden'),a.style.display='inline-flex'):(l.classList.remove('hidden'),o.classList.add('hidden'));
-}
-
+function updateUI(){let l=document.getElementById('btnLogin'),o=document.getElementById('btnLogout'),a=document.getElementById('btnAddAd');currentUser?(l.classList.add('hidden'),o.classList.remove('hidden'),a.style.display='inline-flex'):(l.classList.remove('hidden'),o.classList.add('hidden'));}
 function loadCategories(){
 let g=document.getElementById('categoriesGrid'),s=document.getElementById('searchCategory'),a=document.getElementById('adCategorie'),cats=CATEGORIES.map(c=>({id:c.id,icon:c.icon,name:currentLang==='ar'?c.nameAR:c.nameFR}));
 g.innerHTML=cats.map(c=>`<div class="cat-card" onclick="filterByCategory('${c.id}')"><div class="cat-icon">${c.icon}</div><div class="cat-name">${c.name}</div></div>`).join('');
 let o='<option value="">Toutes</option>'+cats.map(c=>`<option value="${c.id}">${c.icon} ${c.name}</option>`).join('');
 s.innerHTML=o;a.innerHTML='<option value="">-- Choisir --</option>'+o.replace('Toutes','-- Choisir --');
 }
-
-function filterByCategory(c){document.getElementById('searchCategory').value=c;document.getElementById('searchInput').value='';searchAds()}
-function showHome(){document.getElementById('searchInput').value='';document.getElementById('searchCategory').value='';loadAds('recent')}
-function toggleTheme(){currentTheme=currentTheme==='light'?'dark':'light';localStorage.setItem('soge_theme',currentTheme);applyTheme();showToast(currentTheme==='dark'?'🌙 Mode sombre':'☀️ Mode clair','info')}
-function applyTheme(){document.documentElement.setAttribute('data-theme',currentTheme)}
-function switchLang(l){currentLang=l;localStorage.setItem('soge_lang',l);applyLang()}
-function applyLang(){document.documentElement.lang=currentLang;document.documentElement.dir=currentLang==='ar'?'rtl':'ltr';loadCategories()}
-function openLogin(){document.getElementById('loginModal').classList.add('active')}
-function openRegister(){closeModal('loginModal');document.getElementById('registerModal').classList.add('active')}
-function openAddAd(){currentUser?document.getElementById('addAdModal').classList.add('active'):openLogin()}
-function closeModal(id){document.getElementById(id).classList.remove('active')}
-function showToast(m,t='info'){let c=document.getElementById('toastContainer'),x=document.createElement('div');x.className=`toast toast-${t}`;x.textContent=m;c.appendChild(x);setTimeout(()=>{x.style.opacity='0';setTimeout(()=>x.remove(),300)},3000)}
-window.onclick=function(e){if(e.target.classList.contains('modal'))e.target.classList.remove('active')}
-console.log('🚀 SOGE ZABANA RH avec Upload Images');
+function filterByCategory(c){document.getElementById('searchCategory').value=c;document.getElementById('searchInput').value='';searchAds();}
+function showHome(){document.getElementById('searchInput').value='';document.getElementById('searchCategory').value='';loadAds();}
+function toggleTheme(){currentTheme=currentTheme==='light'?'dark':'light';localStorage.setItem('soge_theme',currentTheme);applyTheme();}
+function applyTheme(){document.documentElement.setAttribute('data-theme',currentTheme);}
+function switchLang(l){currentLang=l;localStorage.setItem('soge_lang',l);document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';loadCategories();}
+function openLogin(){document.getElementById('loginModal').classList.add('active');}
+function openRegister(){closeModal('loginModal');document.getElementById('registerModal').classList.add('active');}
+function openAddAd(){currentUser?document.getElementById('addAdModal').classList.add('active'):openLogin();}
+function closeModal(id){document.getElementById(id).classList.remove('active');}
+function showToast(m,t='info'){let c=document.getElementById('toastContainer'),x=document.createElement('div');x.className=`toast toast-${t}`;x.textContent=m;c.appendChild(x);setTimeout(()=>{x.style.opacity='0';setTimeout(()=>x.remove(),300)},3000);}
+window.onclick=function(e){if(e.target.classList.contains('modal'))e.target.classList.remove('active');}
+console.log('🚀 SOGE ZABANA RH - API connectée');
 </script>
 </body>
 </html>
