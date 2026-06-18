@@ -6,74 +6,80 @@
 <meta name="theme-color" content="#009245">
 <title>SOGE ZABANA RH</title>
 <style>
-:root{--primary:#009245;--primary-dark:#007a38;--white:#FFF;--gray-light:#F5F5F5;--gray:#E0E0E0;--dark:#2C2C2C;--text:#333;--shadow:0 2px 10px rgba(0,0,0,0.1);--radius:10px}
+:root{--primary:#009245;--primary-dark:#007a38;--white:#FFF;--gray-light:#F5F5F5;--gray:#E0E0E0;--dark:#2C2C2C;--text:#333;--shadow:0 2px 8px rgba(0,0,0,0.08);--radius:8px}
 [data-theme="dark"]{--white:#1E1E1E;--gray-light:#2C2C2C;--text:#FFF}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Segoe UI',Arial,sans-serif;background:var(--gray-light);color:var(--text);min-height:100vh}
-.header{background:var(--primary);color:#fff;position:sticky;top:0;z-index:1000;box-shadow:0 2px 15px rgba(0,0,0,0.2)}
-.header-top{background:var(--primary-dark);padding:6px 15px;display:flex;justify-content:space-between;font-size:12px;flex-wrap:wrap;gap:5px}
-.header-main{display:flex;align-items:center;justify-content:space-between;padding:10px 15px;max-width:1200px;margin:auto;flex-wrap:wrap;gap:10px}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-weight:700;font-size:18px;cursor:pointer}
-.logo-icon{width:40px;height:40px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--primary);font-weight:800}
-.btn{padding:8px 16px;border:none;border-radius:25px;cursor:pointer;font-weight:600;font-size:13px;transition:.3s;white-space:nowrap;display:inline-flex;align-items:center;gap:5px}
-.btn:hover{transform:translateY(-2px)}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f2f5;color:var(--text);min-height:100vh}
+.header{background:var(--primary);color:#fff;position:sticky;top:0;z-index:1000;box-shadow:0 2px 10px rgba(0,0,0,0.15)}
+.header-top{background:var(--primary-dark);padding:5px 15px;display:flex;justify-content:space-between;font-size:11px;flex-wrap:wrap;gap:5px}
+.header-main{display:flex;align-items:center;justify-content:space-between;padding:8px 15px;max-width:1200px;margin:auto;flex-wrap:wrap;gap:10px}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+.logo-icon{width:36px;height:36px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--primary);font-weight:800;font-size:14px}
+.btn{padding:7px 14px;border:none;border-radius:20px;cursor:pointer;font-weight:600;font-size:12px;transition:.3s;white-space:nowrap;display:inline-flex;align-items:center;gap:4px}
+.btn:hover{opacity:0.9;transform:translateY(-1px)}
 .btn-white{background:#fff;color:var(--primary)}
-.btn-outline{background:transparent;border:2px solid #fff;color:#fff}
-.btn-green{background:var(--primary);color:#fff;width:100%}
-.btn-red{background:#DC3545;color:#fff;width:100%;margin-top:8px}
-.hero{background:linear-gradient(135deg,var(--primary),var(--primary-dark));padding:30px 15px;text-align:center;color:#fff}
-.hero h1{font-size:clamp(20px,5vw,28px);margin-bottom:8px}
-.hero p{font-size:14px;margin-bottom:15px;opacity:0.95}
-.search-box{display:flex;max-width:600px;margin:15px auto 0;background:#fff;border-radius:50px;overflow:hidden;flex-wrap:wrap}
-.search-box input{flex:1;min-width:150px;padding:12px 15px;border:none;font-size:14px;outline:0}
-.search-box select{padding:12px 10px;border:none;border-left:1px solid #ddd;outline:0;background:#fff;font-size:13px}
-.search-box button{background:var(--primary);color:#fff;border:none;padding:12px 20px;cursor:pointer;font-weight:700;white-space:nowrap}
-.container{max-width:1200px;margin:auto;padding:15px}
-.section-title{font-size:20px;font-weight:700;margin:20px 0 15px;padding-left:12px;border-left:4px solid var(--primary)}
-.categories-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:8px;margin-bottom:20px}
-.cat-card{background:var(--white);padding:15px 8px;text-align:center;border-radius:var(--radius);cursor:pointer;box-shadow:var(--shadow);transition:.3s;border:2px solid transparent}
-.cat-card:hover{background:var(--primary);color:#fff;transform:translateY(-3px)}
-.cat-icon{font-size:24px;margin-bottom:5px}
-.cat-name{font-size:11px;font-weight:600}
-.tabs{display:flex;gap:5px;margin-bottom:15px;flex-wrap:wrap}
-.tab{padding:8px 15px;background:var(--white);border-radius:25px;cursor:pointer;font-weight:600;font-size:12px;box-shadow:var(--shadow);transition:.3s;border:2px solid transparent;white-space:nowrap}
-.tab.active{background:var(--primary);color:#fff}
-.ads-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:15px}
-.ad-card{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:.3s;position:relative}
-.ad-card:hover{transform:translateY(-3px);box-shadow:0 5px 20px rgba(0,0,0,0.15)}
-.ad-image{width:100%;height:180px;background:var(--gray);display:flex;align-items:center;justify-content:center;overflow:hidden}
-.ad-image img{width:100%;height:100%;object-fit:cover}
-.ad-image .no-img{font-size:50px}
-.ad-content{padding:12px}
-.ad-title{font-weight:700;margin-bottom:5px;font-size:14px}
-.ad-price{color:var(--primary);font-weight:800;font-size:17px;margin-bottom:6px}
-.ad-meta{font-size:11px;color:#666;display:flex;justify-content:space-between;flex-wrap:wrap;gap:5px}
-.fav-btn{position:absolute;top:8px;right:8px;background:#fff;border:none;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px;box-shadow:0 2px 5px rgba(0,0,0,0.2);z-index:10}
-.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:2000;overflow-y:auto;padding:15px}
+.btn-outline{background:transparent;border:1.5px solid #fff;color:#fff}
+.btn-green{background:var(--primary);color:#fff;width:100%;padding:12px}
+.btn-red{background:#DC3545;color:#fff;width:100%;padding:10px;margin-top:8px}
+.hero{background:linear-gradient(135deg,var(--primary),#006b30);padding:25px 15px;text-align:center;color:#fff}
+.hero h1{font-size:clamp(18px,4vw,24px);margin-bottom:5px}
+.hero p{font-size:13px;margin-bottom:15px;opacity:0.9}
+.search-box{display:flex;max-width:550px;margin:10px auto 0;background:#fff;border-radius:25px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.15)}
+.search-box input{flex:1;min-width:120px;padding:10px 15px;border:none;font-size:13px;outline:0}
+.search-box select{padding:10px 8px;border:none;border-left:1px solid #eee;outline:0;background:#fff;font-size:12px}
+.search-box button{background:var(--primary);color:#fff;border:none;padding:10px 18px;cursor:pointer;font-weight:700;font-size:13px;white-space:nowrap}
+.container{max-width:1200px;margin:auto;padding:12px}
+.section-title{font-size:18px;font-weight:700;margin:15px 0 10px;padding-left:10px;border-left:3px solid var(--primary)}
+.categories-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:6px;margin-bottom:15px}
+.cat-card{background:var(--white);padding:12px 6px;text-align:center;border-radius:var(--radius);cursor:pointer;box-shadow:var(--shadow);transition:.2s;border:1px solid transparent}
+.cat-card:hover{background:#e8f5e9;border-color:var(--primary);transform:translateY(-2px)}
+.cat-icon{font-size:22px;margin-bottom:3px}
+.cat-name{font-size:10px;font-weight:600;line-height:1.2}
+.tabs{display:flex;gap:5px;margin-bottom:12px;flex-wrap:wrap}
+.tab{padding:7px 14px;background:var(--white);border-radius:20px;cursor:pointer;font-weight:600;font-size:11px;box-shadow:var(--shadow);transition:.2s;border:1px solid #eee;white-space:nowrap}
+.tab.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+/* STYLE OUEDKNISS */
+.ads-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.ad-card{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:.2s;border:1px solid #eee;position:relative}
+.ad-card:hover{box-shadow:0 4px 15px rgba(0,0,0,0.12);transform:translateY(-2px)}
+.ad-image{width:100%;height:160px;background:#e8e8e8;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.ad-image img{width:100%;height:100%;object-fit:cover;display:block}
+.ad-image .no-img{font-size:40px;opacity:0.5}
+.ad-badge{position:absolute;top:8px;left:8px;background:#ff6b00;color:#fff;padding:2px 8px;border-radius:3px;font-size:9px;font-weight:700;text-transform:uppercase}
+.ad-content{padding:10px 12px}
+.ad-title{font-weight:600;margin-bottom:4px;font-size:13px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;color:var(--text)}
+.ad-price{color:var(--primary);font-weight:700;font-size:16px;margin-bottom:4px}
+.ad-location{font-size:11px;color:#999;display:flex;align-items:center;gap:3px}
+.ad-date{font-size:10px;color:#bbb;margin-top:2px}
+.fav-btn{position:absolute;top:8px;right:8px;background:rgba(255,255,255,0.9);border:none;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:13px;box-shadow:0 1px 3px rgba(0,0,0,0.2);z-index:10;display:flex;align-items:center;justify-content:center}
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:2000;overflow-y:auto;padding:15px}
 .modal.active{display:flex;align-items:center;justify-content:center}
-.modal-content{background:var(--white);border-radius:var(--radius);padding:20px;max-width:500px;width:100%;max-height:85vh;overflow-y:auto;animation:slideUp .3s}
+.modal-content{background:var(--white);border-radius:12px;padding:20px;max-width:500px;width:100%;max-height:85vh;overflow-y:auto;animation:slideUp .3s}
 @keyframes slideUp{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
-.form-group{margin-bottom:12px}
-.form-group label{display:block;margin-bottom:4px;font-weight:600;font-size:13px}
-.form-group input,.form-group select,.form-group textarea{width:100%;padding:10px;border:2px solid var(--gray);border-radius:8px;font-size:14px;outline:0;background:var(--white);color:var(--text)}
+.form-group{margin-bottom:10px}
+.form-group label{display:block;margin-bottom:3px;font-weight:600;font-size:12px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:9px 12px;border:1.5px solid #ddd;border-radius:6px;font-size:13px;outline:0;background:var(--white);color:var(--text)}
 .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--primary)}
-.form-group input[type="file"]{padding:8px;border:2px dashed var(--gray);background:var(--gray-light);cursor:pointer}
-.image-preview{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-.image-preview img{width:70px;height:70px;object-fit:cover;border-radius:6px;border:2px solid var(--gray)}
+.form-group input[type="file"]{padding:7px;border:1.5px dashed #ddd;background:#fafafa;cursor:pointer}
+.image-preview{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.image-preview img{width:60px;height:60px;object-fit:cover;border-radius:4px;border:1px solid #ddd}
 .toast-container{position:fixed;bottom:15px;right:15px;z-index:3000}
-.toast{padding:10px 18px;border-radius:8px;color:#fff;font-weight:600;font-size:13px;margin-top:5px;animation:slideIn .3s}
+.toast{padding:10px 16px;border-radius:6px;color:#fff;font-weight:600;font-size:12px;margin-top:5px;animation:slideIn .3s}
 .toast-success{background:#28A745}
 .toast-error{background:#DC3545}
 .toast-info{background:#17A2B8}
 @keyframes slideIn{from{transform:translateX(100%)}to{transform:translateX(0)}}
-.footer{background:var(--dark);color:#aaa;padding:20px;text-align:center;margin-top:30px;font-size:13px}
+.footer{background:var(--dark);color:#aaa;padding:20px;text-align:center;margin-top:30px;font-size:12px}
 .hidden{display:none!important}
-.loading{text-align:center;padding:30px}
-.spinner{width:35px;height:35px;border:3px solid #ddd;border-top-color:var(--primary);border-radius:50%;animation:spin .8s infinite linear;margin:0 auto 10px}
+.loading{text-align:center;padding:40px}
+.spinner{width:30px;height:30px;border:3px solid #ddd;border-top-color:var(--primary);border-radius:50%;animation:spin .8s infinite linear;margin:0 auto 10px}
 @keyframes spin{to{transform:rotate(360deg)}}
-.empty-state{text-align:center;padding:30px;color:#888}
-.detail-img{width:100%;max-height:300px;object-fit:cover;border-radius:8px;margin-bottom:10px}
-@media(max-width:768px){.ads-grid{grid-template-columns:1fr}.categories-grid{grid-template-columns:repeat(3,1fr)}}
+.empty-state{text-align:center;padding:40px;color:#999}
+.detail-img{width:100%;max-height:300px;object-fit:contain;border-radius:8px;margin-bottom:10px;background:#f5f5f5}
+.detail-img-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-bottom:10px}
+.detail-img-grid img{width:100%;height:150px;object-fit:cover;border-radius:6px;cursor:pointer}
+@media(max-width:768px){.ads-grid{grid-template-columns:repeat(2,1fr);gap:8px}.categories-grid{grid-template-columns:repeat(4,1fr)}.ad-image{height:130px}}
+@media(max-width:400px){.ads-grid{grid-template-columns:1fr}}
 [dir="rtl"]{direction:rtl}
 </style>
 </head>
@@ -83,24 +89,24 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--gray-light);color:
 <div class="header-top">
 <span>📍 Pôle Urbain Ahmed Zabana - Misserghine</span>
 <div style="display:flex;gap:5px">
-<button onclick="switchLang('fr')" class="btn btn-outline" style="padding:4px 8px;font-size:10px">FR</button>
-<button onclick="switchLang('ar')" class="btn btn-outline" style="padding:4px 8px;font-size:10px">عربي</button>
-<button onclick="toggleTheme()" class="btn btn-outline" style="padding:4px 8px;font-size:10px">🌓</button>
+<button onclick="switchLang('fr')" class="btn btn-outline" style="padding:3px 7px;font-size:10px">FR</button>
+<button onclick="switchLang('ar')" class="btn btn-outline" style="padding:3px 7px;font-size:10px">عربي</button>
+<button onclick="toggleTheme()" class="btn btn-outline" style="padding:3px 7px;font-size:10px">🌓</button>
 </div>
 </div>
 <div class="header-main">
 <div class="logo" onclick="showHome()"><div class="logo-icon">SZ</div><span>SOGE ZABANA RH</span></div>
-<div style="display:flex;gap:8px">
+<div style="display:flex;gap:6px">
 <button onclick="openAddAd()" class="btn btn-white" id="btnAddAd">➕ Publier</button>
 <button onclick="openLogin()" class="btn btn-outline" id="btnLogin">👤 Connexion</button>
-<button onclick="logout()" class="btn btn-outline hidden" id="btnLogout">🚪 Déco</button>
+<button onclick="logout()" class="btn btn-outline hidden" id="btnLogout">🚪</button>
 </div>
 </div>
 </header>
 
 <div class="hero">
 <h1>Trouvez tout près de chez vous</h1>
-<p>Immobilier, Véhicules, Emploi, Services au Pôle Urbain Ahmed Zabana</p>
+<p>Immobilier, Véhicules, Emploi, Services - Pôle Urbain Ahmed Zabana</p>
 <div class="search-box">
 <input type="text" id="searchInput" placeholder="🔍 Que cherchez-vous ?">
 <select id="searchCategory"><option value="">Toutes catégories</option></select>
@@ -127,7 +133,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--gray-light);color:
 <div class="form-group"><label>Email</label><input type="text" id="loginEmail"></div>
 <div class="form-group"><label>Mot de passe</label><input type="password" id="loginPassword"></div>
 <button class="btn btn-green" onclick="login()">Se connecter</button>
-<p style="text-align:center;margin-top:12px"><a href="#" onclick="openRegister()" style="color:var(--primary)">Créer un compte</a></p>
+<p style="text-align:center;margin-top:10px;font-size:13px"><a href="#" onclick="openRegister()" style="color:var(--primary)">Créer un compte</a></p>
 <button class="btn btn-red" onclick="closeModal('loginModal')">Fermer</button>
 </div></div>
 
@@ -138,7 +144,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--gray-light);color:
 <div class="form-group"><label>Email *</label><input type="text" id="regEmail"></div>
 <div class="form-group"><label>Téléphone</label><input type="tel" id="regPhone"></div>
 <div class="form-group"><label>Mot de passe *</label><input type="password" id="regPassword"></div>
-<label style="font-size:12px;display:flex;gap:5px;margin-bottom:10px"><input type="checkbox" id="acceptCGU">J'accepte les conditions</label>
+<label style="font-size:11px;display:flex;gap:5px;margin-bottom:10px"><input type="checkbox" id="acceptCGU">J'accepte les conditions</label>
 <button class="btn btn-green" onclick="register()">S'inscrire</button>
 <button class="btn btn-red" onclick="closeModal('registerModal')">Fermer</button>
 </div></div>
@@ -163,7 +169,6 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--gray-light);color:
 <div class="toast-container" id="toastContainer"></div>
 
 <script>
-// ✅ URL API OFFICIELLE
 const API_URL='https://script.google.com/macros/s/AKfycbyaGmtSWvzrXnKBPiuFJ3kmD0ggEQRfhAPL2LjidxbEUkO3FYPQd10cPP5XexNmOTuL/exec';
 
 const CATEGORIES=[
@@ -185,7 +190,6 @@ let currentAds=[],userFavorites=JSON.parse(localStorage.getItem('soge_favs'))||[
 
 document.addEventListener('DOMContentLoaded',()=>{applyTheme();loadCategories();loadAds();updateUI()});
 
-// API Helper
 async function api(action,params={},method='GET'){
 try{
 if(method==='POST'){
@@ -201,7 +205,6 @@ return await r.json();
 }catch(e){showToast('Erreur connexion','error');return null;}
 }
 
-// Preview images
 function previewImages(){
 const files=document.getElementById('adPhotos').files;
 const preview=document.getElementById('imagePreview');
@@ -216,7 +219,6 @@ reader.readAsDataURL(files[i]);
 
 function fileToBase64(file){return new Promise(r=>{let a=new FileReader();a.onload=e=>r(e.target.result);a.readAsDataURL(file);});}
 
-// Auth
 function login(){
 let e=document.getElementById('loginEmail').value.trim(),p=document.getElementById('loginPassword').value;
 if(!e||!p)return showToast('Champs requis','error');
@@ -235,7 +237,6 @@ r&&r.success?(closeModal('registerModal'),showToast('✅ Compte créé!','succes
 
 function logout(){currentUser=null;localStorage.removeItem('soge_user');updateUI();showHome();showToast('Déconnecté','info');}
 
-// Ads
 function loadAds(){
 document.getElementById('adsContainer').innerHTML='<div class="loading"><div class="spinner"></div></div>';
 api('getAds',{limit:50}).then(r=>{
@@ -251,19 +252,62 @@ function displayAds(a){
 let c=document.getElementById('adsContainer');
 if(!a||a.length===0)return c.innerHTML='<div class="empty-state">📭 Aucune annonce</div>';
 c.innerHTML=a.map(ad=>{
-let p=Number(ad.Prix)||0,fav=userFavorites.includes(ad.ID),imgHTML='';
-if(ad.Photos){let imgs=ad.Photos.split(',');if(imgs[0]&&imgs[0].trim())imgHTML=`<img src="${imgs[0].trim()}" alt="${ad.Titre||''}">`;}
-if(!imgHTML)imgHTML=`<span class="no-img">${(CATEGORIES.find(x=>x.id===ad.Categorie)||{icon:'📦'}).icon}</span>`;
-return`<div class="ad-card" onclick="showAdDetail('${ad.ID}')"><button class="fav-btn" onclick="event.stopPropagation();toggleFav('${ad.ID}')">${fav?'❤️':'🤍'}</button><div class="ad-image">${imgHTML}</div><div class="ad-content"><div class="ad-title">${ad.Titre||'Sans titre'}</div><div class="ad-price">💰 ${p>0?p.toLocaleString('fr-DZ')+' DA':'Gratuit'}</div><div class="ad-meta"><span>📂 ${ad.Categorie||'N/A'}</span><span>📅 ${ad.DatePub?new Date(ad.DatePub).toLocaleDateString('fr-DZ'):'N/A'}</span></div></div></div>`
+let p=Number(ad.Prix)||0,fav=userFavorites.includes(ad.ID);
+// GESTION DES IMAGES
+let imgHTML='';
+if(ad.Photos && ad.Photos.trim()){
+let imgs=ad.Photos.split(',');
+let firstImg=imgs[0].trim();
+if(firstImg){
+imgHTML=`<img src="${firstImg}" alt="${ad.Titre||''}" loading="lazy" onerror="this.parentElement.innerHTML='<span class=no-img>📷</span>'">`;
+}
+}
+if(!imgHTML){
+let catIcon=(CATEGORIES.find(x=>x.id===ad.Categorie)||{icon:'📷'}).icon;
+imgHTML=`<span class="no-img">${catIcon}</span>`;
+}
+return`
+<div class="ad-card" onclick="showAdDetail('${ad.ID}')">
+<button class="fav-btn" onclick="event.stopPropagation();toggleFav('${ad.ID}')">${fav?'❤️':'🤍'}</button>
+<div class="ad-image">${imgHTML}</div>
+<div class="ad-content">
+<div class="ad-title">${ad.Titre||'Sans titre'}</div>
+<div class="ad-price">${p>0?p.toLocaleString('fr-DZ')+' DA':'Gratuit'}</div>
+<div class="ad-location">📍 ${ad.GPS||'Misserghine'}</div>
+<div class="ad-date">📅 ${ad.DatePub?new Date(ad.DatePub).toLocaleDateString('fr-DZ'):''}</div>
+</div>
+</div>`
 }).join('');
 }
 
 function showAdDetail(id){
 let ad=currentAds.find(a=>a.ID===id);if(!ad)return;
 api('incrementViews',{adID:id});
-let m=document.getElementById('adDetailModal'),ct=document.getElementById('adDetailContent'),p=Number(ad.Prix)||0,imgsHTML='';
-if(ad.Photos){ad.Photos.split(',').forEach(ph=>{if(ph.trim())imgsHTML+=`<img src="${ph.trim()}" class="detail-img" alt="Photo">`;});}
-ct.innerHTML=`<h2>${ad.Titre||'Sans titre'}</h2>${imgsHTML}<div style="font-size:24px;color:var(--primary);font-weight:800;margin:10px 0">💰 ${p>0?p.toLocaleString('fr-DZ')+' DA':'Gratuit'}</div><p><strong>📂</strong> ${ad.Categorie}</p><p><strong>📝</strong> ${ad.Description||'Aucune'}</p><p><strong>📞</strong> ${ad.Phone||'N/A'}</p><p><strong>📅</strong> ${ad.DatePub?new Date(ad.DatePub).toLocaleDateString('fr-DZ'):'N/A'}</p><p><strong>👁️</strong> ${ad.Vues||0} vues</p><button class="btn btn-red" onclick="closeModal('adDetailModal')">Fermer</button>`;
+let m=document.getElementById('adDetailModal'),ct=document.getElementById('adDetailContent'),p=Number(ad.Prix)||0;
+// Images du détail
+let imgsHTML='';
+if(ad.Photos && ad.Photos.trim()){
+let imgs=ad.Photos.split(',').filter(ph=>ph.trim());
+if(imgs.length>0){
+if(imgs.length===1){
+imgsHTML=`<img src="${imgs[0].trim()}" class="detail-img" alt="Photo" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22><rect fill=%22%23ddd%22 width=%22200%22 height=%22200%22/><text x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2250%22>📷</text></svg>'">`;
+}else{
+imgsHTML='<div class="detail-img-grid">'+imgs.map(ph=>`<img src="${ph.trim()}" alt="Photo" loading="lazy" onerror="this.style.display='none'">`).join('')+'</div>';
+}
+}
+}
+ct.innerHTML=`
+<h2 style="font-size:18px;margin-bottom:10px">${ad.Titre||'Sans titre'}</h2>
+${imgsHTML}
+<div style="font-size:22px;color:var(--primary);font-weight:800;margin:10px 0">💰 ${p>0?p.toLocaleString('fr-DZ')+' DA':'Gratuit'}</div>
+<p style="margin:5px 0"><strong>📂 Catégorie :</strong> ${ad.Categorie||'N/A'}</p>
+<p style="margin:5px 0"><strong>📝 Description :</strong> ${ad.Description||'Aucune'}</p>
+<p style="margin:5px 0"><strong>📞 Téléphone :</strong> <a href="tel:${ad.Phone}" style="color:var(--primary)">${ad.Phone||'N/A'}</a></p>
+<p style="margin:5px 0"><strong>📍 Localisation :</strong> ${ad.GPS||'Misserghine'}</p>
+<p style="margin:5px 0"><strong>📅 Publié le :</strong> ${ad.DatePub?new Date(ad.DatePub).toLocaleDateString('fr-DZ'):'N/A'}</p>
+<p style="margin:5px 0"><strong>👁️ Vues :</strong> ${ad.Vues||0}</p>
+<button class="btn btn-red" onclick="closeModal('adDetailModal')">Fermer</button>
+`;
 m.classList.add('active');
 }
 
@@ -273,15 +317,16 @@ let c=document.getElementById('adCategorie').value,t=document.getElementById('ad
 if(!c||!t)return showToast('Catégorie et titre requis','error');
 let photosUrls=[];
 if(selectedImages.length>0){
-showToast('📸 Upload images sur Drive...','info');
+showToast('📸 Upload images...','info');
 for(let img of selectedImages){
 let b64=await fileToBase64(img);
 let r=await api('uploadImage',{image:b64},'POST');
 if(r&&r.success)photosUrls.push(r.url);
 }
+showToast('✅ '+photosUrls.length+' image(s) uploadée(s)','success');
 }
 api('createAd',{userID:currentUser.ID,categorie:c,titre:t,description:d,prix:p,phone:ph,photos:photosUrls.join(',')}).then(r=>{
-if(r&&r.success){closeModal('addAdModal');selectedImages=[];document.getElementById('imagePreview').innerHTML='';document.getElementById('adPhotos').value='';showToast('✅ Publié!','success');loadAds();}
+if(r&&r.success){closeModal('addAdModal');selectedImages=[];document.getElementById('imagePreview').innerHTML='';document.getElementById('adPhotos').value='';showToast('✅ Annonce publiée!','success');loadAds();}
 else showToast(r?.error||'Erreur','error');
 });
 }
@@ -315,7 +360,6 @@ document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
 api('getFavorites',{userID:currentUser.ID}).then(r=>{r&&Array.isArray(r)?(currentAds=r,displayAds(r)):document.getElementById('adsContainer').innerHTML='<div class="empty-state">Pas de favoris</div>';});
 }
 
-// UI
 function updateUI(){let l=document.getElementById('btnLogin'),o=document.getElementById('btnLogout'),a=document.getElementById('btnAddAd');currentUser?(l.classList.add('hidden'),o.classList.remove('hidden'),a.style.display='inline-flex'):(l.classList.remove('hidden'),o.classList.add('hidden'));}
 function loadCategories(){
 let g=document.getElementById('categoriesGrid'),s=document.getElementById('searchCategory'),a=document.getElementById('adCategorie'),cats=CATEGORIES.map(c=>({id:c.id,icon:c.icon,name:currentLang==='ar'?c.nameAR:c.nameFR}));
@@ -334,7 +378,7 @@ function openAddAd(){currentUser?document.getElementById('addAdModal').classList
 function closeModal(id){document.getElementById(id).classList.remove('active');}
 function showToast(m,t='info'){let c=document.getElementById('toastContainer'),x=document.createElement('div');x.className=`toast toast-${t}`;x.textContent=m;c.appendChild(x);setTimeout(()=>{x.style.opacity='0';setTimeout(()=>x.remove(),300)},3000);}
 window.onclick=function(e){if(e.target.classList.contains('modal'))e.target.classList.remove('active');}
-console.log('🚀 SOGE ZABANA RH - API connectée');
+console.log('🚀 SOGE ZABANA RH Ready');
 </script>
 </body>
 </html>
