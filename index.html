@@ -1,1207 +1,329 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#009245">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="SOGE ZABANA RH">
-    <title>SOGE ZABANA RH - Pôle Urbain Ahmed Zabana</title>
-    
-    <style>
-        :root {
-            --primary: #009245;
-            --primary-dark: #007a38;
-            --primary-light: #00b856;
-            --white: #FFFFFF;
-            --gray-light: #F5F5F5;
-            --gray: #E0E0E0;
-            --dark: #2C2C2C;
-            --text: #333333;
-            --text-light: #666666;
-            --danger: #DC3545;
-            --success: #28A745;
-            --warning: #FFC107;
-            --shadow: 0 2px 10px rgba(0,0,0,0.1);
-            --shadow-lg: 0 5px 25px rgba(0,0,0,0.15);
-            --radius: 12px;
-            --radius-sm: 8px;
-            --transition: all 0.3s ease;
-        }
-
-        [data-theme="dark"] {
-            --white: #1E1E1E;
-            --gray-light: #2C2C2C;
-            --gray: #3D3D3D;
-            --text: #FFFFFF;
-            --text-light: #CCCCCC;
-            --shadow: 0 2px 10px rgba(0,0,0,0.3);
-            --shadow-lg: 0 5px 25px rgba(0,0,0,0.5);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
-            background: var(--gray-light);
-            color: var(--text);
-            line-height: 1.6;
-            transition: var(--transition);
-            min-height: 100vh;
-        }
-
-        /* HEADER */
-        .header {
-            background: var(--primary);
-            color: white;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.2);
-        }
-        .header-top {
-            background: var(--primary-dark);
-            padding: 6px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 12px;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .header-main {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 20px;
-            max-width: 1200px;
-            margin: auto;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: white;
-            font-weight: 700;
-            font-size: 18px;
-            cursor: pointer;
-        }
-        .logo-icon {
-            width: 42px;
-            height: 42px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-weight: 800;
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-        .header-actions {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        /* BUTTONS */
-        .btn {
-            padding: 8px 18px;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 13px;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            text-decoration: none;
-            white-space: nowrap;
-        }
-        .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
-        .btn:active { transform: translateY(0); }
-        .btn-white { background: white; color: var(--primary); }
-        .btn-outline { background: transparent; border: 2px solid white; color: white; }
-        .btn-outline:hover { background: rgba(255,255,255,0.15); }
-        .btn-green { background: var(--primary); color: white; width: 100%; }
-        .btn-green:hover { background: var(--primary-dark); }
-        .btn-red { background: var(--danger); color: white; }
-        .btn-red:hover { background: #c82333; }
-        .btn-sm { padding: 5px 12px; font-size: 11px; }
-        .btn-lg { padding: 12px 24px; font-size: 15px; }
-        .btn-block { width: 100%; margin-top: 10px; }
-
-        /* HERO */
-        .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, #006b30 100%);
-            padding: 30px 20px;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
-        }
-        .hero h1 { 
-            font-size: clamp(22px, 5vw, 32px); 
-            margin-bottom: 8px; 
-            font-weight: 800;
-            position: relative;
-        }
-        .hero p { 
-            font-size: clamp(13px, 2.5vw, 16px); 
-            margin-bottom: 20px; 
-            opacity: 0.95;
-            position: relative;
-        }
-        .search-box {
-            display: flex;
-            max-width: 650px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 50px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            position: relative;
-            flex-wrap: wrap;
-        }
-        .search-box input {
-            flex: 1;
-            min-width: 150px;
-            padding: 14px 20px;
-            border: none;
-            font-size: 15px;
-            outline: none;
-            color: #333;
-        }
-        .search-box select {
-            padding: 14px 15px;
-            border: none;
-            border-left: 1px solid var(--gray);
-            outline: none;
-            background: white;
-            font-size: 14px;
-            cursor: pointer;
-            color: #333;
-        }
-        .search-box button {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 14px 25px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 14px;
-            transition: var(--transition);
-            white-space: nowrap;
-        }
-        .search-box button:hover { background: var(--primary-dark); }
-
-        /* CONTAINER */
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 15px;
-        }
-        .section-title {
-            font-size: clamp(18px, 3vw, 22px);
-            font-weight: 700;
-            margin: 25px 0 15px 0;
-            padding-left: 15px;
-            border-left: 4px solid var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* CATEGORIES */
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 10px;
-            margin-bottom: 25px;
-        }
-        .cat-card {
-            background: var(--white);
-            padding: 18px 10px;
-            text-align: center;
-            border-radius: var(--radius);
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 2px solid transparent;
-        }
-        .cat-card:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-dark);
-        }
-        .cat-icon { font-size: 28px; margin-bottom: 6px; }
-        .cat-name { font-size: 12px; font-weight: 600; line-height: 1.2; }
-
-        /* TABS */
-        .tabs {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        .tab {
-            padding: 8px 18px;
-            background: var(--white);
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 13px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 2px solid transparent;
-            white-space: nowrap;
-        }
-        .tab:hover { border-color: var(--primary); }
-        .tab.active { 
-            background: var(--primary); 
-            color: white; 
-            border-color: var(--primary-dark);
-        }
-
-        /* ADS GRID */
-        .ads-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-            gap: 18px;
-        }
-        .ad-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            cursor: pointer;
-            position: relative;
-            border: 2px solid transparent;
-        }
-        .ad-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary);
-        }
-        .ad-image {
-            width: 100%;
-            height: 170px;
-            background: linear-gradient(135deg, var(--gray) 0%, var(--gray-light) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 45px;
-            color: #999;
-        }
-        .ad-content { padding: 15px; }
-        .ad-title { 
-            font-weight: 700; 
-            margin-bottom: 5px; 
-            font-size: 15px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        .ad-price { 
-            color: var(--primary); 
-            font-weight: 800; 
-            font-size: 19px; 
-            margin-bottom: 8px; 
-        }
-        .ad-meta { 
-            font-size: 11px; 
-            color: var(--text-light); 
-            display: flex; 
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 5px;
-        }
-        .ad-badge {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: var(--danger);
-            color: white;
-            padding: 3px 10px;
-            border-radius: 15px;
-            font-size: 10px;
-            font-weight: 700;
-        }
-        .fav-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: white;
-            border: none;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 16px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-        }
-        .fav-btn:hover { transform: scale(1.15); }
-
-        /* MODAL */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.6);
-            z-index: 2000;
-            overflow-y: auto;
-            padding: 20px;
-            backdrop-filter: blur(3px);
-        }
-        .modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .modal-content {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 25px;
-            max-width: 520px;
-            width: 100%;
-            max-height: 85vh;
-            overflow-y: auto;
-            animation: slideUp 0.3s ease;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-        @keyframes slideUp {
-            from { transform: translateY(40px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        .modal-content h2 {
-            margin-bottom: 20px;
-            color: var(--primary);
-            font-size: 22px;
-        }
-        .form-group { margin-bottom: 15px; }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-            font-size: 13px;
-            color: var(--text);
-        }
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px 15px;
-            border: 2px solid var(--gray);
-            border-radius: var(--radius-sm);
-            font-size: 14px;
-            outline: none;
-            transition: var(--transition);
-            background: var(--white);
-            color: var(--text);
-        }
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(0,146,69,0.1);
-        }
-        .form-group textarea { resize: vertical; min-height: 80px; }
-
-        /* TOAST */
-        .toast-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 3000;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .toast {
-            padding: 12px 20px;
-            border-radius: var(--radius-sm);
-            color: white;
-            font-weight: 600;
-            font-size: 14px;
-            animation: slideInRight 0.3s ease;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            max-width: 350px;
-        }
-        .toast-success { background: var(--success); }
-        .toast-error { background: var(--danger); }
-        .toast-info { background: #17A2B8; }
-        @keyframes slideInRight {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        /* FOOTER */
-        .footer {
-            background: var(--dark);
-            color: #ccc;
-            padding: 25px 20px;
-            text-align: center;
-            margin-top: 40px;
-            font-size: 13px;
-        }
-        .footer a { color: var(--primary-light); text-decoration: none; }
-
-        /* LOADING */
-        .loading {
-            text-align: center;
-            padding: 40px;
-            font-size: 16px;
-            color: var(--text-light);
-        }
-        .spinner {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            border: 4px solid var(--gray);
-            border-top-color: var(--primary);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        .empty-state {
-            text-align: center;
-            padding: 40px;
-            color: var(--text-light);
-            font-size: 15px;
-        }
-        .hidden { display: none !important; }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .header-main { padding: 10px; }
-            .logo { font-size: 15px; }
-            .logo-icon { width: 35px; height: 35px; font-size: 15px; }
-            .search-box { border-radius: 15px; }
-            .search-box input { width: 100%; border-radius: 15px 15px 0 0; }
-            .search-box select { width: 50%; border-left: none; border-top: 1px solid var(--gray); }
-            .search-box button { width: 50%; border-radius: 0 0 15px 0; }
-            .ads-grid { grid-template-columns: 1fr; }
-            .categories-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-            .cat-card { padding: 12px 8px; }
-            .cat-icon { font-size: 22px; }
-            .cat-name { font-size: 10px; }
-            .btn { padding: 7px 14px; font-size: 12px; }
-        }
-
-        @media (max-width: 400px) {
-            .header-top { font-size: 10px; }
-            .categories-grid { grid-template-columns: repeat(2, 1fr); }
-            .search-box select { width: 100%; }
-            .search-box button { width: 100%; border-radius: 0 0 15px 15px; }
-        }
-
-        [dir="rtl"] { direction: rtl; text-align: right; }
-        [dir="rtl"] .section-title { border-left: none; border-right: 4px solid var(--primary); padding-left: 0; padding-right: 15px; }
-        [dir="rtl"] .toast-container { right: auto; left: 20px; }
-        [dir="rtl"] .fav-btn { right: auto; left: 10px; }
-        [dir="rtl"] .ad-badge { left: auto; right: 10px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#009245">
+<title>SOGE ZABANA RH</title>
+<style>
+:root{--primary:#009245;--primary-dark:#007a38;--white:#FFF;--gray-light:#F5F5F5;--gray:#E0E0E0;--dark:#2C2C2C;--text:#333;--shadow:0 2px 10px rgba(0,0,0,0.1);--radius:10px}
+[data-theme="dark"]{--white:#1E1E1E;--gray-light:#2C2C2C;--text:#FFF}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Arial,sans-serif;background:var(--gray-light);color:var(--text);min-height:100vh}
+.header{background:var(--primary);color:#fff;position:sticky;top:0;z-index:1000}
+.header-top{background:var(--primary-dark);padding:6px 15px;display:flex;justify-content:space-between;font-size:12px;flex-wrap:wrap;gap:5px}
+.header-main{display:flex;align-items:center;justify-content:space-between;padding:10px 15px;max-width:1200px;margin:auto;flex-wrap:wrap;gap:10px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-weight:700;font-size:18px;cursor:pointer}
+.logo-icon{width:40px;height:40px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--primary);font-weight:800}
+.btn{padding:8px 16px;border:none;border-radius:25px;cursor:pointer;font-weight:600;font-size:13px;transition:.3s;white-space:nowrap;display:inline-flex;align-items:center;gap:5px}
+.btn:hover{transform:translateY(-2px)}
+.btn-white{background:#fff;color:var(--primary)}
+.btn-outline{background:0 0;border:2px solid #fff;color:#fff}
+.btn-green{background:var(--primary);color:#fff;width:100%}
+.btn-red{background:#DC3545;color:#fff;width:100%;margin-top:8px}
+.hero{background:linear-gradient(135deg,var(--primary),var(--primary-dark));padding:30px 15px;text-align:center;color:#fff}
+.hero h1{font-size:clamp(20px,5vw,28px);margin-bottom:8px}
+.hero p{font-size:14px;margin-bottom:15px;opacity:0.95}
+.search-box{display:flex;max-width:600px;margin:15px auto 0;background:#fff;border-radius:50px;overflow:hidden;flex-wrap:wrap}
+.search-box input{flex:1;min-width:150px;padding:12px 15px;border:none;font-size:14px;outline:0}
+.search-box select{padding:12px 10px;border:none;border-left:1px solid #ddd;outline:0;background:#fff;font-size:13px}
+.search-box button{background:var(--primary);color:#fff;border:none;padding:12px 20px;cursor:pointer;font-weight:700;white-space:nowrap}
+.container{max-width:1200px;margin:auto;padding:15px}
+.section-title{font-size:20px;font-weight:700;margin:20px 0 15px;padding-left:12px;border-left:4px solid var(--primary)}
+.categories-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:8px;margin-bottom:20px}
+.cat-card{background:var(--white);padding:15px 8px;text-align:center;border-radius:var(--radius);cursor:pointer;box-shadow:var(--shadow);transition:.3s;border:2px solid transparent}
+.cat-card:hover{background:var(--primary);color:#fff;transform:translateY(-3px)}
+.cat-icon{font-size:24px;margin-bottom:5px}
+.cat-name{font-size:11px;font-weight:600}
+.tabs{display:flex;gap:5px;margin-bottom:15px;flex-wrap:wrap}
+.tab{padding:8px 15px;background:var(--white);border-radius:25px;cursor:pointer;font-weight:600;font-size:12px;box-shadow:var(--shadow);transition:.3s;border:2px solid transparent;white-space:nowrap}
+.tab.active{background:var(--primary);color:#fff}
+.ads-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:15px}
+.ad-card{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:.3s;position:relative}
+.ad-card:hover{transform:translateY(-3px);box-shadow:0 5px 20px rgba(0,0,0,0.15)}
+.ad-image{width:100%;height:160px;background:var(--gray);display:flex;align-items:center;justify-content:center;font-size:40px}
+.ad-content{padding:12px}
+.ad-title{font-weight:700;margin-bottom:5px;font-size:14px}
+.ad-price{color:var(--primary);font-weight:800;font-size:17px;margin-bottom:6px}
+.ad-meta{font-size:11px;color:#666;display:flex;justify-content:space-between}
+.fav-btn{position:absolute;top:8px;right:8px;background:#fff;border:none;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px;box-shadow:0 2px 5px rgba(0,0,0,0.2);z-index:10}
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:2000;overflow-y:auto;padding:15px}
+.modal.active{display:flex;align-items:center;justify-content:center}
+.modal-content{background:var(--white);border-radius:var(--radius);padding:20px;max-width:500px;width:100%;max-height:80vh;overflow-y:auto;animation:slideUp .3s}
+@keyframes slideUp{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
+.form-group{margin-bottom:12px}
+.form-group label{display:block;margin-bottom:4px;font-weight:600;font-size:13px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:10px;border:2px solid var(--gray);border-radius:8px;font-size:14px;outline:0}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--primary)}
+.toast-container{position:fixed;bottom:15px;right:15px;z-index:3000}
+.toast{padding:10px 18px;border-radius:8px;color:#fff;font-weight:600;font-size:13px;margin-top:5px;animation:slideIn .3s}
+.toast-success{background:#28A745}
+.toast-error{background:#DC3545}
+.toast-info{background:#17A2B8}
+@keyframes slideIn{from{transform:translateX(100%)}to{transform:translateX(0)}}
+.footer{background:var(--dark);color:#aaa;padding:20px;text-align:center;margin-top:30px;font-size:13px}
+.hidden{display:none!important}
+.loading{text-align:center;padding:30px}
+.spinner{width:35px;height:35px;border:3px solid #ddd;border-top-color:var(--primary);border-radius:50%;animation:spin .8s infinite linear;margin:0 auto 10px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.empty-state{text-align:center;padding:30px;color:#888}
+@media(max-width:768px){.ads-grid{grid-template-columns:1fr}.categories-grid{grid-template-columns:repeat(3,1fr)}}
+[dir="rtl"]{direction:rtl}
+</style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="header">
-    <div class="header-top">
-        <span>📍 Pôle Urbain Ahmed Zabana - Misserghine, Oran</span>
-        <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
-            <button onclick="switchLang('fr')" class="btn btn-sm btn-outline" id="btnFr">🇫🇷 FR</button>
-            <button onclick="switchLang('ar')" class="btn btn-sm btn-outline" id="btnAr">🇩🇿 عربي</button>
-            <button onclick="toggleTheme()" class="btn btn-sm btn-outline" title="Changer thème">🌓</button>
-        </div>
-    </div>
-    <div class="header-main">
-        <div class="logo" onclick="showHome()">
-            <div class="logo-icon">SZ</div>
-            <span>SOGE ZABANA RH</span>
-        </div>
-        <div class="header-actions">
-            <button onclick="openAddAd()" class="btn btn-white" id="btnAddAd">➕ Déposer une annonce</button>
-            <button onclick="openLogin()" class="btn btn-outline" id="btnLogin">👤 Connexion</button>
-            <button onclick="logout()" class="btn btn-outline hidden" id="btnLogout">🚪 Déconnexion</button>
-        </div>
-    </div>
+<div class="header-top">
+<span>📍 Pôle Urbain Ahmed Zabana - Misserghine</span>
+<div style="display:flex;gap:5px">
+<button onclick="switchLang('fr')" class="btn btn-outline" style="padding:4px 8px;font-size:10px">FR</button>
+<button onclick="switchLang('ar')" class="btn btn-outline" style="padding:4px 8px;font-size:10px">عربي</button>
+<button onclick="toggleTheme()" class="btn btn-outline" style="padding:4px 8px;font-size:10px">🌓</button>
+</div>
+</div>
+<div class="header-main">
+<div class="logo" onclick="showHome()"><div class="logo-icon">SZ</div><span>SOGE ZABANA RH</span></div>
+<div style="display:flex;gap:8px">
+<button onclick="openAddAd()" class="btn btn-white" id="btnAddAd">➕ Publier</button>
+<button onclick="openLogin()" class="btn btn-outline" id="btnLogin">👤 Connexion</button>
+<button onclick="logout()" class="btn btn-outline hidden" id="btnLogout">🚪 Déco</button>
+</div>
+</div>
 </header>
 
-<!-- HERO -->
-<div class="hero" id="heroSection">
-    <h1 id="heroTitle">Trouvez tout près de chez vous</h1>
-    <p id="heroSub">Immobilier, Véhicules, Emploi, Services au Pôle Urbain Ahmed Zabana</p>
-    <div class="search-box">
-        <input type="text" id="searchInput" placeholder="🔍 Que recherchez-vous ?" onkeypress="if(event.key==='Enter')searchAds()">
-        <select id="searchCategory">
-            <option value="">Toutes catégories</option>
-        </select>
-        <button onclick="searchAds()">🔍 Rechercher</button>
-    </div>
+<div class="hero">
+<h1>Trouvez tout près de chez vous</h1>
+<p>Immobilier, Véhicules, Emploi, Services au Pôle Urbain Ahmed Zabana</p>
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="🔍 Que cherchez-vous ?">
+<select id="searchCategory"><option value="">Toutes catégories</option></select>
+<button onclick="searchAds()">Rechercher</button>
+</div>
 </div>
 
-<!-- MAIN CONTENT -->
-<div class="container" id="mainContent">
-    <!-- CATEGORIES -->
-    <h2 class="section-title" id="catTitle">📂 Catégories</h2>
-    <div class="categories-grid" id="categoriesGrid"></div>
-
-    <!-- TABS -->
-    <div class="tabs">
-        <div class="tab active" onclick="loadAds('recent')" id="tabRecent">🕐 Récents</div>
-        <div class="tab" onclick="loadAds('popular')" id="tabPopular">⭐ Populaires</div>
-        <div class="tab" onclick="showFavorites()" id="tabFav">❤️ Favoris</div>
-        <div class="tab" onclick="showMyAds()" id="tabMyAds">📋 Mes annonces</div>
-        <div class="tab" onclick="showNews()" id="tabNews">📰 Actualités</div>
-    </div>
-
-    <!-- ADS CONTAINER -->
-    <div id="adsContainer"></div>
+<div class="container">
+<h2 class="section-title">📂 Catégories</h2>
+<div class="categories-grid" id="categoriesGrid"></div>
+<div class="tabs">
+<div class="tab active" onclick="loadAds('recent')">🕐 Récents</div>
+<div class="tab" onclick="loadAds('popular')">⭐ Populaires</div>
+<div class="tab" onclick="showFavorites()">❤️ Favoris</div>
+<div class="tab" onclick="showMyAds()">📋 Mes annonces</div>
+</div>
+<div id="adsContainer"></div>
 </div>
 
-<!-- FOOTER -->
-<footer class="footer" id="footerText">
-    © 2026 SOGE ZABANA RH - Tous droits réservés
-</footer>
+<footer class="footer">© 2026 SOGE ZABANA RH - Tous droits réservés</footer>
 
-<!-- MODAL: LOGIN -->
-<div class="modal" id="loginModal">
-    <div class="modal-content">
-        <h2>🔐 Connexion</h2>
-        <div class="form-group">
-            <label>Email</label>
-            <input type="email" id="loginEmail" placeholder="votre@email.com">
-        </div>
-        <div class="form-group">
-            <label>Mot de passe</label>
-            <input type="password" id="loginPassword" placeholder="••••••••">
-        </div>
-        <button class="btn btn-green" onclick="login()">Se connecter</button>
-        <p style="text-align:center;margin-top:15px;font-size:14px;">
-            Pas de compte ? <a href="#" onclick="openRegister()" style="color:var(--primary);font-weight:600;">S'inscrire</a>
-        </p>
-        <button class="btn btn-red btn-block" onclick="closeModal('loginModal')">Fermer</button>
-    </div>
-</div>
+<div class="modal" id="loginModal"><div class="modal-content">
+<h2>Connexion</h2>
+<div class="form-group"><label>Email</label><input type="text" id="loginEmail"></div>
+<div class="form-group"><label>Mot de passe</label><input type="password" id="loginPassword"></div>
+<button class="btn btn-green" onclick="login()">Se connecter</button>
+<p style="text-align:center;margin-top:12px"><a href="#" onclick="openRegister()" style="color:var(--primary)">Créer un compte</a></p>
+<button class="btn btn-red" onclick="closeModal('loginModal')">Fermer</button>
+</div></div>
 
-<!-- MODAL: REGISTER -->
-<div class="modal" id="registerModal">
-    <div class="modal-content">
-        <h2>📝 Inscription</h2>
-        <div class="form-group"><label>Nom *</label><input type="text" id="regNom" placeholder="Votre nom"></div>
-        <div class="form-group"><label>Prénom *</label><input type="text" id="regPrenom" placeholder="Votre prénom"></div>
-        <div class="form-group"><label>Email *</label><input type="email" id="regEmail" placeholder="votre@email.com"></div>
-        <div class="form-group"><label>Téléphone</label><input type="tel" id="regPhone" placeholder="05XXXXXXXX"></div>
-        <div class="form-group"><label>Commune</label><input type="text" id="regCommune" value="Misserghine"></div>
-        <div class="form-group"><label>Mot de passe *</label><input type="password" id="regPassword" placeholder="Minimum 6 caractères"></div>
-        <div class="form-group">
-            <label style="display:flex;align-items:center;gap:8px;font-weight:400;">
-                <input type="checkbox" id="acceptCGU" style="width:auto;">
-                J'accepte les conditions d'utilisation
-            </label>
-        </div>
-        <button class="btn btn-green" onclick="register()">S'inscrire</button>
-        <button class="btn btn-red btn-block" onclick="closeModal('registerModal')">Fermer</button>
-    </div>
-</div>
+<div class="modal" id="registerModal"><div class="modal-content">
+<h2>Inscription</h2>
+<div class="form-group"><label>Nom *</label><input type="text" id="regNom"></div>
+<div class="form-group"><label>Prénom *</label><input type="text" id="regPrenom"></div>
+<div class="form-group"><label>Email *</label><input type="text" id="regEmail"></div>
+<div class="form-group"><label>Téléphone</label><input type="tel" id="regPhone"></div>
+<div class="form-group"><label>Mot de passe *</label><input type="password" id="regPassword"></div>
+<label style="font-size:12px;display:flex;gap:5px;margin-bottom:10px"><input type="checkbox" id="acceptCGU">J'accepte les conditions</label>
+<button class="btn btn-green" onclick="register()">S'inscrire</button>
+<button class="btn btn-red" onclick="closeModal('registerModal')">Fermer</button>
+</div></div>
 
-<!-- MODAL: ADD AD -->
-<div class="modal" id="addAdModal">
-    <div class="modal-content">
-        <h2>📢 Déposer une annonce</h2>
-        <div class="form-group"><label>Catégorie *</label><select id="adCategorie"></select></div>
-        <div class="form-group"><label>Titre *</label><input type="text" id="adTitre" placeholder="Titre de l'annonce"></div>
-        <div class="form-group"><label>Description</label><textarea id="adDescription" placeholder="Décrivez votre annonce..."></textarea></div>
-        <div class="form-group"><label>Prix (DA)</label><input type="number" id="adPrix" placeholder="0 = Gratuit"></div>
-        <div class="form-group"><label>Téléphone</label><input type="tel" id="adPhone" placeholder="05XXXXXXXX"></div>
-        <button class="btn btn-green" onclick="createAd()">✅ Publier l'annonce</button>
-        <button class="btn btn-red btn-block" onclick="closeModal('addAdModal')">Fermer</button>
-    </div>
-</div>
+<div class="modal" id="addAdModal"><div class="modal-content">
+<h2>Déposer une annonce</h2>
+<div class="form-group"><label>Catégorie *</label><select id="adCategorie"></select></div>
+<div class="form-group"><label>Titre *</label><input type="text" id="adTitre"></div>
+<div class="form-group"><label>Description</label><textarea id="adDescription" rows="3"></textarea></div>
+<div class="form-group"><label>Prix (DA)</label><input type="number" id="adPrix"></div>
+<div class="form-group"><label>Téléphone</label><input type="tel" id="adPhone"></div>
+<button class="btn btn-green" onclick="createAd()">Publier</button>
+<button class="btn btn-red" onclick="closeModal('addAdModal')">Fermer</button>
+</div></div>
 
-<!-- MODAL: AD DETAIL -->
-<div class="modal" id="adDetailModal">
-    <div class="modal-content" id="adDetailContent"></div>
-</div>
-
-<!-- TOAST CONTAINER -->
+<div class="modal" id="adDetailModal"><div class="modal-content" id="adDetailContent"></div></div>
 <div class="toast-container" id="toastContainer"></div>
 
 <script>
-// ============================================
-// SOGE ZABANA RH - Application JavaScript
-// API: https://script.google.com/macros/s/AKfycbzpAkcBLt8eSP7q-twwNuo3_Np71oV4BPMblzL6QL56TdJs1m5e8hGa4TU-6LmezxvU/exec
-// ============================================
+// NOUVELLE URL API
+const API_URL='https://script.google.com/macros/s/AKfycbx_G_pLDxOadmLo14Zn2nRoveuA3LTV-2iCrFvOEtJ2mMRhw0gdZce7G4sEVr55MlFT/exec';
 
-const API_URL = 'https://script.google.com/macros/s/AKfycbx_G_pLDxOadmLo14Zn2nRoveuA3LTV-2iCrFvOEtJ2mMRhw0gdZce7G4sEVr55MlFT/exec';
-
-const CATEGORIES = [
-    { id: 'Immobilier', icon: '🏠', nameFR: 'Immobilier', nameAR: 'عقارات' },
-    { id: 'Véhicules', icon: '🚗', nameFR: 'Véhicules', nameAR: 'سيارات' },
-    { id: 'Emploi', icon: '💼', nameFR: 'Emploi', nameAR: 'وظائف' },
-    { id: 'Services', icon: '🔧', nameFR: 'Services', nameAR: 'خدمات' },
-    { id: 'Santé', icon: '🏥', nameFR: 'Santé', nameAR: 'صحة' },
-    { id: 'Éducation', icon: '📚', nameFR: 'Éducation', nameAR: 'تعليم' },
-    { id: 'Commerce', icon: '🛍️', nameFR: 'Commerce', nameAR: 'تجارة' },
-    { id: 'Événements', icon: '🎉', nameFR: 'Événements', nameAR: 'فعاليات' },
-    { id: 'AADL', icon: '🏗️', nameFR: 'AADL', nameAR: 'عدل' },
-    { id: 'LPA', icon: '🏢', nameFR: 'LPA', nameAR: 'LPA' },
-    { id: 'Terrains', icon: '🌍', nameFR: 'Terrains', nameAR: 'أراضي' },
-    { id: 'Villas', icon: '🏡', nameFR: 'Villas', nameAR: 'فلل' },
-    { id: 'Formation', icon: '🎓', nameFR: 'Formation', nameAR: 'تكوين' },
-    { id: 'Associations', icon: '🤝', nameFR: 'Associations', nameAR: 'جمعيات' },
-    { id: 'Administration', icon: '🏛️', nameFR: 'Administration', nameAR: 'إدارة' },
-    { id: 'Divers', icon: '📦', nameFR: 'Divers', nameAR: 'متنوع' }
+const CATEGORIES=[
+{id:'Immobilier',icon:'🏠',nameFR:'Immobilier',nameAR:'عقارات'},
+{id:'Véhicules',icon:'🚗',nameFR:'Véhicules',nameAR:'سيارات'},
+{id:'Emploi',icon:'💼',nameFR:'Emploi',nameAR:'وظائف'},
+{id:'Services',icon:'🔧',nameFR:'Services',nameAR:'خدمات'},
+{id:'Santé',icon:'🏥',nameFR:'Santé',nameAR:'صحة'},
+{id:'Commerce',icon:'🛍️',nameFR:'Commerce',nameAR:'تجارة'},
+{id:'Événements',icon:'🎉',nameFR:'Événements',nameAR:'فعاليات'},
+{id:'AADL',icon:'🏗️',nameFR:'AADL',nameAR:'عدل'},
+{id:'Divers',icon:'📦',nameFR:'Divers',nameAR:'متنوع'}
 ];
+let currentUser=JSON.parse(localStorage.getItem('soge_user'))||null;
+let currentLang=localStorage.getItem('soge_lang')||'fr';
+let currentTheme=localStorage.getItem('soge_theme')||'light';
+let currentAds=[],userFavorites=JSON.parse(localStorage.getItem('soge_favs'))||[];
 
-// ÉTAT DE L'APPLICATION
-let currentUser = JSON.parse(localStorage.getItem('soge_user')) || null;
-let currentLang = localStorage.getItem('soge_lang') || 'fr';
-let currentTheme = localStorage.getItem('soge_theme') || 'light';
-let currentAds = [];
-let userFavorites = JSON.parse(localStorage.getItem('soge_favs')) || [];
+document.addEventListener('DOMContentLoaded',()=>{applyTheme();applyLang();loadCategories();loadAds('recent');updateUI()});
 
-// INITIALISATION
-document.addEventListener('DOMContentLoaded', () => {
-    applyTheme();
-    applyLang();
-    loadCategories();
-    loadAds('recent');
-    updateUI();
-    loadSettings();
+async function api(action,params={}){
+try{
+let url=new URL(API_URL);
+url.searchParams.append('action',action);
+Object.keys(params).forEach(k=>url.searchParams.append(k,params[k]));
+let r=await fetch(url);
+return await r.json();
+}catch(e){
+showToast('Erreur connexion','error');
+return null;
+}
+}
+
+function login(){
+let e=document.getElementById('loginEmail').value.trim();
+let p=document.getElementById('loginPassword').value;
+if(!e||!p)return showToast('Champs requis','error');
+api('login',{email:e,password:p}).then(r=>{
+if(r&&r.success){
+currentUser=r.user;
+localStorage.setItem('soge_user',JSON.stringify(currentUser));
+closeModal('loginModal');
+showToast('✅ Connecté!','success');
+updateUI();
+loadAds('recent');
+}else{
+showToast(r?.error||'Email ou mot de passe incorrect','error');
+}
 });
-
-// API CALLS
-async function api(action, params = {}) {
-    try {
-        const url = new URL(API_URL);
-        url.searchParams.append('action', action);
-        Object.keys(params).forEach(k => url.searchParams.append(k, encodeURIComponent(params[k])));
-        
-        const res = await fetch(url, { 
-            method: 'GET',
-            headers: { 'Accept': 'application/json' }
-        });
-        const data = await res.json();
-        return data;
-    } catch(e) {
-        console.error('Erreur API:', e);
-        showToast('Erreur de connexion au serveur', 'error');
-        return null;
-    }
 }
 
-// AUTHENTIFICATION
-async function login() {
-    const email = document.getElementById('loginEmail').value.trim();
-    const password = document.getElementById('loginPassword').value;
-    
-    if (!email || !password) return showToast('Veuillez remplir tous les champs', 'error');
-    
-    showToast('Connexion en cours...', 'info');
-    
-    const result = await api('login', { email, password });
-    
-    if (result && result.success) {
-        currentUser = result.user;
-        localStorage.setItem('soge_user', JSON.stringify(currentUser));
-        closeModal('loginModal');
-        showToast('✅ Connecté avec succès !', 'success');
-        updateUI();
-        loadAds('recent');
-    } else {
-        showToast(result?.error || 'Email ou mot de passe incorrect', 'error');
-    }
+function register(){
+let n=document.getElementById('regNom').value.trim();
+let p=document.getElementById('regPrenom').value.trim();
+let e=document.getElementById('regEmail').value.trim();
+let ph=document.getElementById('regPhone').value.trim();
+let pw=document.getElementById('regPassword').value;
+if(!n||!p||!e||!pw)return showToast('Champs requis','error');
+api('register',{nom:n,prenom:p,email:e,phone:ph,password:pw}).then(r=>{
+if(r&&r.success){
+closeModal('registerModal');
+showToast('✅ Compte créé!','success');
+openLogin();
+}else{
+showToast(r?.error||'Erreur','error');
+}
+});
 }
 
-async function register() {
-    const nom = document.getElementById('regNom').value.trim();
-    const prenom = document.getElementById('regPrenom').value.trim();
-    const email = document.getElementById('regEmail').value.trim();
-    const phone = document.getElementById('regPhone').value.trim();
-    const commune = document.getElementById('regCommune').value.trim();
-    const password = document.getElementById('regPassword').value;
-    const acceptCGU = document.getElementById('acceptCGU').checked;
-    
-    if (!nom || !prenom || !email || !password) return showToast('Champs obligatoires manquants', 'error');
-    if (!acceptCGU) return showToast('Veuillez accepter les conditions', 'error');
-    if (password.length < 6) return showToast('Mot de passe trop court (min 6)', 'error');
-    
-    showToast('Inscription en cours...', 'info');
-    
-    const result = await api('register', { nom, prenom, email, phone, commune, password });
-    
-    if (result && result.success) {
-        closeModal('registerModal');
-        showToast('✅ Compte créé ! Connectez-vous', 'success');
-        openLogin();
-    } else {
-        showToast(result?.error || 'Erreur d\'inscription', 'error');
-    }
+function logout(){currentUser=null;localStorage.removeItem('soge_user');updateUI();showHome();showToast('Déconnecté','info')}
+
+function loadAds(t='recent'){
+document.getElementById('adsContainer').innerHTML='<div class="loading"><div class="spinner"></div></div>';
+api('getAds',{limit:50}).then(r=>{
+if(r&&Array.isArray(r)){
+currentAds=r;
+displayAds(r);
+document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+document.getElementById('tabRecent').classList.add('active');
+}else{
+document.getElementById('adsContainer').innerHTML='<div class="empty-state">Aucune annonce</div>';
+}
+});
 }
 
-function logout() {
-    currentUser = null;
-    localStorage.removeItem('soge_user');
-    userFavorites = [];
-    localStorage.removeItem('soge_favs');
-    updateUI();
-    showToast('Déconnecté', 'info');
-    showHome();
+function displayAds(a){
+let c=document.getElementById('adsContainer');
+if(!a||a.length===0)return c.innerHTML='<div class="empty-state">📭 Aucune annonce</div>';
+c.innerHTML=a.map(ad=>{
+let p=Number(ad.Prix)||0,fav=userFavorites.includes(ad.ID);
+return`<div class="ad-card" onclick="showAdDetail('${ad.ID}')"><button class="fav-btn" onclick="event.stopPropagation();toggleFav('${ad.ID}')">${fav?'❤️':'🤍'}</button><div class="ad-image">${getCatIcon(ad.Categorie)}</div><div class="ad-content"><div class="ad-title">${ad.Titre||'Sans titre'}</div><div class="ad-price">💰 ${p>0?p.toLocaleString('fr-DZ')+' DA':'Gratuit'}</div><div class="ad-meta"><span>📂 ${ad.Categorie||'N/A'}</span><span>📅 ${ad.DatePub?new Date(ad.DatePub).toLocaleDateString('fr-DZ'):'N/A'}</span></div></div></div>`
+}).join('');
 }
 
-// ANNONCES
-async function loadAds(type = 'recent') {
-    const container = document.getElementById('adsContainer');
-    container.innerHTML = '<div class="loading"><div class="spinner"></div><p>Chargement...</p></div>';
-    
-    const params = { limit: 50 };
-    if (type === 'popular') params.sort = 'Vues';
-    
-    const result = await api('getAds', params);
-    
-    if (result && Array.isArray(result)) {
-        currentAds = result;
-        displayAds(result);
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        const tabMap = { recent: 'tabRecent', popular: 'tabPopular' };
-        const tabId = tabMap[type];
-        if (tabId) document.getElementById(tabId).classList.add('active');
-    } else {
-        container.innerHTML = '<div class="empty-state">❌ Aucune annonce trouvée</div>';
-    }
+function getCatIcon(c){let x=CATEGORIES.find(y=>y.id===c);return x?x.icon:'📦'}
+
+function showAdDetail(id){
+let ad=currentAds.find(a=>a.ID===id);
+if(!ad)return;
+api('incrementViews',{adID:id});
+let m=document.getElementById('adDetailModal'),ct=document.getElementById('adDetailContent'),p=Number(ad.Prix)||0;
+ct.innerHTML=`<h2>${ad.Titre||'Sans titre'}</h2><div style="font-size:24px;color:var(--primary);font-weight:800">💰 ${p>0?p.toLocaleString('fr-DZ')+' DA':'Gratuit'}</div><p><strong>📂</strong> ${ad.Categorie}</p><p><strong>📝</strong> ${ad.Description||'Aucune'}</p><p><strong>📞</strong> ${ad.Phone||'N/A'}</p><p><strong>📅</strong> ${ad.DatePub?new Date(ad.DatePub).toLocaleDateString('fr-DZ'):'N/A'}</p><button class="btn btn-red" onclick="closeModal('adDetailModal')">Fermer</button>`;
+m.classList.add('active');
 }
 
-function displayAds(ads) {
-    const container = document.getElementById('adsContainer');
-    
-    if (!ads || ads.length === 0) {
-        container.innerHTML = '<div class="empty-state">📭 Aucune annonce pour le moment</div>';
-        return;
-    }
-    
-    container.innerHTML = ads.map(ad => {
-        const isFav = userFavorites.includes(ad.ID);
-        const prix = Number(ad.Prix) || 0;
-        const prixAff = prix > 0 ? prix.toLocaleString('fr-DZ') + ' DA' : 'Gratuit';
-        const date = ad.DatePub ? new Date(ad.DatePub).toLocaleDateString('fr-DZ') : 'Date inconnue';
-        
-        return `
-            <div class="ad-card" onclick="showAdDetail('${ad.ID}')">
-                <button class="fav-btn" onclick="event.stopPropagation(); toggleFav('${ad.ID}')" title="Favoris">
-                    ${isFav ? '❤️' : '🤍'}
-                </button>
-                <div class="ad-image">${getCategoryIcon(ad.Categorie)}</div>
-                <div class="ad-content">
-                    <div class="ad-title">${ad.Titre || 'Sans titre'}</div>
-                    <div class="ad-price">💰 ${prixAff}</div>
-                    <div class="ad-meta">
-                        <span>📂 ${ad.Categorie || 'N/A'}</span>
-                        <span>📅 ${date}</span>
-                    </div>
-                </div>
-            </div>
-        `;
-    }).join('');
+function createAd(){
+if(!currentUser)return closeModal('addAdModal'),openLogin();
+let c=document.getElementById('adCategorie').value,t=document.getElementById('adTitre').value.trim(),d=document.getElementById('adDescription').value.trim(),p=document.getElementById('adPrix').value||0,ph=document.getElementById('adPhone').value.trim();
+if(!c||!t)return showToast('Catégorie et titre requis','error');
+api('createAd',{userID:currentUser.ID,categorie:c,titre:t,description:d,prix:p,phone:ph}).then(r=>{
+r&&r.success?(closeModal('addAdModal'),showToast('✅ Publié!','success'),loadAds('recent')):showToast(r?.error||'Erreur','error');
+});
 }
 
-function getCategoryIcon(categorie) {
-    const cat = CATEGORIES.find(c => c.id === categorie);
-    return cat ? cat.icon : '📦';
+function searchAds(){
+let q=document.getElementById('searchInput').value.trim(),c=document.getElementById('searchCategory').value;
+document.getElementById('adsContainer').innerHTML='<div class="loading"><div class="spinner"></div></div>';
+api('searchAds',{query:q,categorie:c}).then(r=>{
+r&&Array.isArray(r)?(currentAds=r,displayAds(r),document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'))):document.getElementById('adsContainer').innerHTML='<div class="empty-state">Aucun résultat</div>';
+});
 }
 
-async function showAdDetail(adID) {
-    const ad = currentAds.find(a => a.ID === adID);
-    if (!ad) return showToast('Annonce introuvable', 'error');
-    
-    // Incrémenter les vues
-    api('incrementViews', { adID });
-    
-    const modal = document.getElementById('adDetailModal');
-    const content = document.getElementById('adDetailContent');
-    const prix = Number(ad.Prix) || 0;
-    const prixAff = prix > 0 ? prix.toLocaleString('fr-DZ') + ' DA' : 'Gratuit';
-    const date = ad.DatePub ? new Date(ad.DatePub).toLocaleDateString('fr-DZ') : 'N/A';
-    
-    content.innerHTML = `
-        <h2>${ad.Titre || 'Sans titre'}</h2>
-        <div style="font-size:28px;color:var(--primary);font-weight:800;margin:10px 0;">💰 ${prixAff}</div>
-        <p><strong>📂 Catégorie :</strong> ${ad.Categorie || 'N/A'}</p>
-        <p><strong>📝 Description :</strong> ${ad.Description || 'Aucune description'}</p>
-        <p><strong>📞 Téléphone :</strong> ${ad.Phone || 'Non spécifié'}</p>
-        <p><strong>📍 Localisation :</strong> ${ad.GPS || 'Misserghine'}</p>
-        <p><strong>📅 Publié le :</strong> ${date}</p>
-        <p><strong>👁️ Vues :</strong> ${ad.Vues || 0}</p>
-        ${currentUser && currentUser.ID !== ad.UserID ? `
-            <button class="btn btn-green btn-block" onclick="contactSeller('${ad.UserID}', '${ad.ID}')">
-                📩 Contacter le vendeur
-            </button>
-        ` : ''}
-        ${currentUser && currentUser.ID === ad.UserID ? `
-            <button class="btn btn-red btn-block" onclick="deleteMyAd('${ad.ID}')">
-                🗑️ Supprimer mon annonce
-            </button>
-        ` : ''}
-        <button class="btn btn-red btn-block" onclick="closeModal('adDetailModal')">Fermer</button>
-    `;
-    
-    modal.classList.add('active');
+function showMyAds(){
+if(!currentUser)return showToast('Connectez-vous','error');
+document.getElementById('adsContainer').innerHTML='<div class="loading"><div class="spinner"></div></div>';
+document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+document.getElementById('tabMyAds').classList.add('active');
+api('getUserAds',{userID:currentUser.ID}).then(r=>{
+r&&Array.isArray(r)?(currentAds=r,displayAds(r)):document.getElementById('adsContainer').innerHTML='<div class="empty-state">Pas d\'annonces</div>';
+});
 }
 
-async function createAd() {
-    if (!currentUser) {
-        closeModal('addAdModal');
-        return openLogin();
-    }
-    
-    const categorie = document.getElementById('adCategorie').value;
-    const titre = document.getElementById('adTitre').value.trim();
-    const description = document.getElementById('adDescription').value.trim();
-    const prix = document.getElementById('adPrix').value || 0;
-    const phone = document.getElementById('adPhone').value.trim() || currentUser.Phone || '';
-    
-    if (!categorie) return showToast('Veuillez choisir une catégorie', 'error');
-    if (!titre) return showToast('Veuillez entrer un titre', 'error');
-    
-    showToast('Publication en cours...', 'info');
-    
-    const result = await api('createAd', {
-        userID: currentUser.ID,
-        categorie,
-        titre,
-        description,
-        prix,
-        phone
-    });
-    
-    if (result && result.success) {
-        closeModal('addAdModal');
-        showToast('✅ Annonce publiée avec succès !', 'success');
-        // Réinitialiser le formulaire
-        document.getElementById('adTitre').value = '';
-        document.getElementById('adDescription').value = '';
-        document.getElementById('adPrix').value = '';
-        loadAds('recent');
-    } else {
-        showToast(result?.error || 'Erreur de publication', 'error');
-    }
+function toggleFav(id){
+if(!currentUser)return showToast('Connectez-vous','error');
+api('toggleFavorite',{userID:currentUser.ID,adID:id}).then(r=>{
+if(r&&r.success)r.action==='added'?userFavorites.push(id):userFavorites=userFavorites.filter(x=>x!==id),localStorage.setItem('soge_favs',JSON.stringify(userFavorites)),displayAds(currentAds),showToast(r.action==='added'?'❤️ Ajouté':'🤍 Retiré','success');
+});
 }
 
-async function searchAds() {
-    const query = document.getElementById('searchInput').value.trim();
-    const category = document.getElementById('searchCategory').value;
-    
-    if (!query && !category) return showToast('Entrez un terme de recherche', 'error');
-    
-    const container = document.getElementById('adsContainer');
-    container.innerHTML = '<div class="loading"><div class="spinner"></div><p>Recherche...</p></div>';
-    
-    const result = await api('searchAds', { query, categorie: category });
-    
-    if (result && Array.isArray(result)) {
-        currentAds = result;
-        displayAds(result);
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        showToast(`${result.length} résultat(s) trouvé(s)`, 'success');
-    } else {
-        container.innerHTML = '<div class="empty-state">🔍 Aucun résultat trouvé</div>';
-    }
+function showFavorites(){
+if(!currentUser)return showToast('Connectez-vous','error');
+document.getElementById('adsContainer').innerHTML='<div class="loading"><div class="spinner"></div></div>';
+document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+document.getElementById('tabFav').classList.add('active');
+api('getFavorites',{userID:currentUser.ID}).then(r=>{
+r&&Array.isArray(r)?(currentAds=r,displayAds(r)):document.getElementById('adsContainer').innerHTML='<div class="empty-state">Pas de favoris</div>';
+});
 }
 
-async function showMyAds() {
-    if (!currentUser) return showToast('Connectez-vous d\'abord', 'error');
-    
-    const container = document.getElementById('adsContainer');
-    container.innerHTML = '<div class="loading"><div class="spinner"></div><p>Chargement...</p></div>';
-    
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.getElementById('tabMyAds').classList.add('active');
-    
-    const result = await api('getUserAds', { userID: currentUser.ID });
-    
-    if (result && Array.isArray(result)) {
-        currentAds = result;
-        displayAds(result);
-    } else {
-        container.innerHTML = '<div class="empty-state">📋 Vous n\'avez pas encore d\'annonces</div>';
-    }
+function updateUI(){let l=document.getElementById('btnLogin'),o=document.getElementById('btnLogout'),a=document.getElementById('btnAddAd');currentUser?(l.classList.add('hidden'),o.classList.remove('hidden'),a.style.display='inline-flex'):(l.classList.remove('hidden'),o.classList.add('hidden'))}
+
+function loadCategories(){
+let g=document.getElementById('categoriesGrid'),s=document.getElementById('searchCategory'),a=document.getElementById('adCategorie'),cats=CATEGORIES.map(c=>({id:c.id,icon:c.icon,name:currentLang==='ar'?c.nameAR:c.nameFR}));
+g.innerHTML=cats.map(c=>`<div class="cat-card" onclick="filterByCategory('${c.id}')"><div class="cat-icon">${c.icon}</div><div class="cat-name">${c.name}</div></div>`).join('');
+let o='<option value="">Toutes</option>'+cats.map(c=>`<option value="${c.id}">${c.icon} ${c.name}</option>`).join('');
+s.innerHTML=o;a.innerHTML='<option value="">-- Choisir --</option>'+o.replace('Toutes','-- Choisir --');
 }
 
-async function deleteMyAd(adID) {
-    if (!confirm('Voulez-vous vraiment supprimer cette annonce ?')) return;
-    
-    const result = await api('deleteAd', { adID });
-    
-    if (result && result.success) {
-        closeModal('adDetailModal');
-        showToast('🗑️ Annonce supprimée', 'success');
-        loadAds('recent');
-    } else {
-        showToast('Erreur de suppression', 'error');
-    }
-}
-
-// FAVORIS
-async function toggleFav(adID) {
-    if (!currentUser) {
-        return showToast('Connectez-vous pour ajouter aux favoris', 'error');
-    }
-    
-    const result = await api('toggleFavorite', { userID: currentUser.ID, adID });
-    
-    if (result && result.success) {
-        if (result.action === 'added') {
-            userFavorites.push(adID);
-            showToast('❤️ Ajouté aux favoris', 'success');
-        } else {
-            userFavorites = userFavorites.filter(id => id !== adID);
-            showToast('🤍 Retiré des favoris', 'info');
-        }
-        localStorage.setItem('soge_favs', JSON.stringify(userFavorites));
-        displayAds(currentAds);
-    }
-}
-
-async function showFavorites() {
-    if (!currentUser) return showToast('Connectez-vous d\'abord', 'error');
-    
-    const container = document.getElementById('adsContainer');
-    container.innerHTML = '<div class="loading"><div class="spinner"></div><p>Chargement...</p></div>';
-    
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.getElementById('tabFav').classList.add('active');
-    
-    const result = await api('getFavorites', { userID: currentUser.ID });
-    
-    if (result && Array.isArray(result)) {
-        currentAds = result;
-        displayAds(result);
-    } else {
-        container.innerHTML = '<div class="empty-state">❤️ Aucun favori pour le moment</div>';
-    }
-}
-
-// ACTUALITÉS
-async function showNews() {
-    const container = document.getElementById('adsContainer');
-    container.innerHTML = '<div class="loading"><div class="spinner"></div><p>Chargement des actualités...</p></div>';
-    
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.getElementById('tabNews').classList.add('active');
-    
-    const result = await api('getNews');
-    
-    if (result && Array.isArray(result) && result.length > 0) {
-        container.innerHTML = result.map(item => `
-            <div style="background:var(--white);border-radius:var(--radius);padding:20px;margin-bottom:15px;box-shadow:var(--shadow);">
-                <h3 style="color:var(--primary);margin-bottom:10px;">📰 ${item.Titre || 'Sans titre'}</h3>
-                <p>${item.Contenu || ''}</p>
-                <small style="color:var(--text-light);">📅 ${item.Date ? new Date(item.Date).toLocaleDateString('fr-DZ') : ''}</small>
-            </div>
-        `).join('');
-    } else {
-        container.innerHTML = '<div class="empty-state">📰 Aucune actualité pour le moment</div>';
-    }
-}
-
-// MESSAGES
-async function contactSeller(sellerID, adID) {
-    const message = prompt('💬 Votre message au vendeur :');
-    if (!message || !message.trim()) return;
-    
-    const result = await api('sendMessage', {
-        fromID: currentUser.ID,
-        toID: sellerID,
-        adID,
-        message: message.trim()
-    });
-    
-    if (result && result.success) {
-        showToast('📩 Message envoyé avec succès !', 'success');
-        closeModal('adDetailModal');
-    } else {
-        showToast('Erreur d\'envoi du message', 'error');
-    }
-}
-
-// PARAMÈTRES
-async function loadSettings() {
-    const result = await api('getSettings');
-    if (result && result.SiteName) {
-        document.querySelector('.logo span').textContent = result.SiteName;
-        document.title = result.SiteName;
-    }
-    if (result && result.FooterFR) {
-        document.getElementById('footerText').innerHTML = result.FooterFR;
-    }
-}
-
-// UI HELPERS
-function updateUI() {
-    const btnLogin = document.getElementById('btnLogin');
-    const btnLogout = document.getElementById('btnLogout');
-    const btnAddAd = document.getElementById('btnAddAd');
-    
-    if (currentUser) {
-        btnLogin.classList.add('hidden');
-        btnLogout.classList.remove('hidden');
-        btnAddAd.style.display = 'inline-flex';
-    } else {
-        btnLogin.classList.remove('hidden');
-        btnLogout.classList.add('hidden');
-    }
-}
-
-function loadCategories() {
-    const lang = currentLang;
-    const grid = document.getElementById('categoriesGrid');
-    const selectSearch = document.getElementById('searchCategory');
-    const selectAd = document.getElementById('adCategorie');
-    
-    const cats = CATEGORIES.map(c => ({
-        id: c.id,
-        icon: c.icon,
-        name: lang === 'ar' ? c.nameAR : c.nameFR
-    }));
-    
-    // Grille
-    grid.innerHTML = cats.map(c => `
-        <div class="cat-card" onclick="filterByCategory('${c.id}')">
-            <div class="cat-icon">${c.icon}</div>
-            <div class="cat-name">${c.name}</div>
-        </div>
-    `).join('');
-    
-    // Selects
-    const options = '<option value="">Toutes les catégories</option>' + 
-        cats.map(c => `<option value="${c.id}">${c.icon} ${c.name}</option>`).join('');
-    
-    selectSearch.innerHTML = options;
-    selectAd.innerHTML = '<option value="">-- Choisir --</option>' + 
-        cats.map(c => `<option value="${c.id}">${c.icon} ${c.name}</option>`).join('');
-}
-
-function filterByCategory(cat) {
-    document.getElementById('searchCategory').value = cat;
-    document.getElementById('searchInput').value = '';
-    searchAds();
-}
-
-function showHome() {
-    document.getElementById('searchInput').value = '';
-    document.getElementById('searchCategory').value = '';
-    loadAds('recent');
-}
-
-// THEME & LANGUE
-function toggleTheme() {
-    currentTheme = currentTheme === 'light' ? 'dark' : 'light';
-    localStorage.setItem('soge_theme', currentTheme);
-    applyTheme();
-    showToast(currentTheme === 'dark' ? '🌙 Mode sombre' : '☀️ Mode clair', 'info');
-}
-
-function applyTheme() {
-    document.documentElement.setAttribute('data-theme', currentTheme);
-}
-
-function switchLang(lang) {
-    currentLang = lang;
-    localStorage.setItem('soge_lang', lang);
-    applyLang();
-    showToast(lang === 'ar' ? '🇩🇿 العربية' : '🇫🇷 Français', 'info');
-}
-
-function applyLang() {
-    document.documentElement.lang = currentLang;
-    document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-    
-    // Mettre à jour les textes
-    const heroTitle = document.getElementById('heroTitle');
-    const heroSub = document.getElementById('heroSub');
-    const catTitle = document.getElementById('catTitle');
-    
-    if (currentLang === 'ar') {
-        if (heroTitle) heroTitle.textContent = 'جد كل شيء بالقرب منك';
-        if (heroSub) heroSub.textContent = 'عقارات، سيارات، وظائف، خدمات والمزيد في القطب الحضري أحمد زبانة';
-        if (catTitle) catTitle.textContent = '📂 الفئات';
-    } else {
-        if (heroTitle) heroTitle.textContent = 'Trouvez tout près de chez vous';
-        if (heroSub) heroSub.textContent = 'Immobilier, Véhicules, Emploi, Services au Pôle Urbain Ahmed Zabana';
-        if (catTitle) catTitle.textContent = '📂 Catégories';
-    }
-    
-    loadCategories();
-}
-
-// MODALS
-function openLogin() { document.getElementById('loginModal').classList.add('active'); }
-function openRegister() { 
-    closeModal('loginModal');
-    document.getElementById('registerModal').classList.add('active'); 
-}
-function openAddAd() {
-    if (!currentUser) return openLogin();
-    document.getElementById('addAdModal').classList.add('active');
-}
-function closeModal(id) { document.getElementById(id).classList.remove('active'); }
-
-// TOAST
-function showToast(msg, type = 'info') {
-    const container = document.getElementById('toastContainer');
-    const toast = document.createElement('div');
-    toast.className = `toast toast-${type}`;
-    toast.textContent = msg;
-    container.appendChild(toast);
-    setTimeout(() => {
-        toast.style.opacity = '0';
-        toast.style.transition = 'opacity 0.3s';
-        setTimeout(() => toast.remove(), 300);
-    }, 3500);
-}
-
-// FERMER MODALS AU CLIC EXTÉRIEUR
-window.onclick = function(e) {
-    if (e.target.classList.contains('modal')) {
-        e.target.classList.remove('active');
-    }
-};
-
-console.log('🚀 SOGE ZABANA RH - Application prête');
-console.log('📡 API:', API_URL);
-console.log('👤 Utilisateur:', currentUser ? currentUser.Email : 'Non connecté');
-console.log('🌐 Langue:', currentLang);
-console.log('🎨 Thème:', currentTheme);
+function filterByCategory(c){document.getElementById('searchCategory').value=c;document.getElementById('searchInput').value='';searchAds()}
+function showHome(){document.getElementById('searchInput').value='';document.getElementById('searchCategory').value='';loadAds('recent')}
+function toggleTheme(){currentTheme=currentTheme==='light'?'dark':'light';localStorage.setItem('soge_theme',currentTheme);applyTheme();showToast(currentTheme==='dark'?'🌙 Mode sombre':'☀️ Mode clair','info')}
+function applyTheme(){document.documentElement.setAttribute('data-theme',currentTheme)}
+function switchLang(l){currentLang=l;localStorage.setItem('soge_lang',l);applyLang()}
+function applyLang(){document.documentElement.lang=currentLang;document.documentElement.dir=currentLang==='ar'?'rtl':'ltr';loadCategories()}
+function openLogin(){document.getElementById('loginModal').classList.add('active')}
+function openRegister(){closeModal('loginModal');document.getElementById('registerModal').classList.add('active')}
+function openAddAd(){currentUser?document.getElementById('addAdModal').classList.add('active'):openLogin()}
+function closeModal(id){document.getElementById(id).classList.remove('active')}
+function showToast(m,t='info'){let c=document.getElementById('toastContainer'),x=document.createElement('div');x.className=`toast toast-${t}`;x.textContent=m;c.appendChild(x);setTimeout(()=>{x.style.opacity='0';setTimeout(()=>x.remove(),300)},3000)}
+window.onclick=function(e){if(e.target.classList.contains('modal'))e.target.classList.remove('active')}
+console.log('🚀 SOGE ZABANA RH - API:',API_URL);
 </script>
-
 </body>
 </html>
