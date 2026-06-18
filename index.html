@@ -228,7 +228,7 @@ body{font-family:'Google Sans','Roboto',Arial,sans-serif;background:var(--bg);co
 <style>.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:2000;overflow-y:auto;padding:20px}.modal.active{display:flex;align-items:center;justify-content:center}</style>
 
 <script>
-const API_URL='https://script.google.com/macros/s/AKfycbx4sPf7Z2x5ikaZZ1TX13es82oQ-i_uplu7NSsd5iREm0eEWZEhNY42FJz1mtx6mPGF/exec';
+const API_URL='https://script.google.com/macros/s/AKfycbyUQfLBlK8PSrTa6LTWUnuRaYeK02_IGZ2aY_HM9PFKQtL-KkrBP8Tx2CW_ZOS0ZEp4/exec';
 const CATS=[{id:'Immobilier',icon:'🏠',fr:'Immobilier',ar:'عقارات'},{id:'Véhicules',icon:'🚗',fr:'Véhicules',ar:'سيارات'},{id:'Emploi',icon:'💼',fr:'Emploi',ar:'وظائف'},{id:'Services',icon:'🔧',fr:'Services',ar:'خدمات'},{id:'Santé',icon:'🏥',fr:'Santé',ar:'صحة'},{id:'Commerce',icon:'🛍️',fr:'Commerce',ar:'تجارة'},{id:'Divers',icon:'📦',fr:'Divers',ar:'متنوع'}];
 let U=JSON.parse(localStorage.getItem('su'))||null,L=localStorage.getItem('sl')||'fr',T=localStorage.getItem('st')||'light',A=[],F=JSON.parse(localStorage.getItem('sf'))||[],I=[];
 document.addEventListener('DOMContentLoaded',()=>{document.documentElement.setAttribute('data-theme',T);loadCats();loadAds();updateUI();});
