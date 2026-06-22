@@ -39,14 +39,11 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,sans-serif;backgrou
 .ad-image img{width:100%;height:100%;object-fit:cover}
 .ad-image .no-img{font-size:50px;opacity:0.4}
 .fav-btn{position:absolute;top:10px;right:10px;background:rgba(255,255,255,0.95);border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:10;display:flex;align-items:center;justify-content:center;transition:.3s}
-.fav-btn:hover{transform:scale(1.1)}
 .ad-content{padding:12px 14px}
 .ad-title{font-weight:700;font-size:13px;line-height:1.3;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .ad-price{color:var(--primary);font-weight:800;font-size:16px;margin-bottom:4px}
 .ad-loc{font-size:11px;color:var(--text-light);display:flex;align-items:center;gap:4px}
 .ad-date{font-size:10px;color:#999;margin-top:2px}
-
-/* MODERN MODAL */
 .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:2000;overflow-y:auto;padding:20px;backdrop-filter:blur(5px)}
 .modal.active{display:flex;align-items:center;justify-content:center}
 .modal-content{background:var(--white);border-radius:20px;padding:30px;max-width:480px;width:100%;max-height:85vh;overflow-y:auto;animation:slideUp .3s;box-shadow:0 20px 60px rgba(0,0,0,0.2)}
@@ -57,13 +54,9 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,sans-serif;backgrou
 .form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 16px;border:2px solid var(--border);border-radius:12px;font-size:14px;outline:0;background:var(--white);color:var(--text);transition:.3s}
 .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--primary);box-shadow:0 0 0 4px rgba(0,146,69,0.1)}
 .form-group input[type="file"]{padding:12px;border:2px dashed var(--border);background:#fafafa;cursor:pointer;text-align:center}
-.form-group input[type="file"]:hover{border-color:var(--primary);background:#f0faf3}
 .image-preview{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
 .image-preview img{width:70px;height:70px;object-fit:cover;border-radius:10px;border:2px solid var(--border)}
 .detail-img{width:100%;max-height:300px;object-fit:contain;border-radius:12px;margin-bottom:12px;background:#f5f5f5}
-.detail-imgs{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-bottom:12px}
-.detail-imgs img{width:100%;height:140px;object-fit:cover;border-radius:10px;cursor:pointer;transition:.3s}
-.detail-imgs img:hover{transform:scale(1.02)}
 .toast-container{position:fixed;bottom:20px;right:20px;z-index:3000;display:flex;flex-direction:column;gap:8px}
 .toast{padding:12px 20px;border-radius:12px;color:#fff;font-weight:600;font-size:13px;animation:slideIn .3s;box-shadow:0 4px 15px rgba(0,0,0,0.2)}
 .toast-success{background:#27ae60}
@@ -76,13 +69,11 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,sans-serif;backgrou
 .spinner{width:40px;height:40px;border:4px solid #e0e0e0;border-top-color:var(--primary);border-radius:50%;animation:spin .8s infinite linear;margin:0 auto 12px}
 @keyframes spin{to{transform:rotate(360deg)}}
 .empty-state{text-align:center;padding:50px;color:#999;font-size:15px}
-.empty-state .icon{font-size:50px;margin-bottom:10px}
 @media(max-width:600px){.ads-grid{grid-template-columns:repeat(2,1fr);gap:10px}.ad-image{height:120px}.hero h1{font-size:22px}.modal-content{padding:20px}}
 [dir="rtl"]{direction:rtl}
 </style>
 </head>
 <body>
-
 <header class="header">
 <div class="logo" onclick="showHome()"><div class="logo-icon">SZ</div>SOGE ZABANA RH</div>
 <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
@@ -94,224 +85,34 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,sans-serif;backgrou
 <button onclick="logout()" class="btn btn-danger hidden" id="btnLogout">🚪 Déconnexion</button>
 </div>
 </header>
-
-<div class="hero">
-<h1>🔍 Trouvez tout près de chez vous</h1>
-<p>Immobilier • Véhicules • Emploi • Services • Pôle Urbain Ahmed Zabana</p>
-<div class="search-box">
-<input type="text" id="searchInput" placeholder="Que recherchez-vous ?">
-<select id="searchCategory"><option value="">📂 Catégories</option></select>
-<button onclick="searchAds()">🔍 Rechercher</button>
-</div>
-</div>
-
-<div class="container">
-<div class="tabs">
-<div class="tab active" onclick="loadAds()">🕐 Toutes les annonces</div>
-<div class="tab" onclick="showFavorites()">❤️ Favoris</div>
-<div class="tab" onclick="showMyAds()">📋 Mes annonces</div>
-</div>
-<div id="adsContainer"></div>
-</div>
-
+<div class="hero"><h1>🔍 Trouvez tout près de chez vous</h1><p>Immobilier • Véhicules • Emploi • Services • Pôle Urbain Ahmed Zabana</p><div class="search-box"><input type="text" id="searchInput" placeholder="Que recherchez-vous ?"><select id="searchCategory"><option value="">📂 Catégories</option></select><button onclick="searchAds()">🔍 Rechercher</button></div></div>
+<div class="container"><div class="tabs"><div class="tab active" onclick="loadAds()">🕐 Toutes</div><div class="tab" onclick="showFavorites()">❤️ Favoris</div><div class="tab" onclick="showMyAds()">📋 Mes annonces</div></div><div id="adsContainer"></div></div>
 <footer class="footer">© 2026 SOGE ZABANA RH - Pôle Urbain Ahmed Zabana, Misserghine, Oran</footer>
 
-<!-- MODAL LOGIN -->
-<div class="modal" id="loginModal"><div class="modal-content">
-<h3>🔐 Connexion</h3>
-<div class="form-group"><label>Email</label><input type="email" id="loginEmail" placeholder="votre@email.com"></div>
-<div class="form-group"><label>Mot de passe</label><input type="password" id="loginPassword" placeholder="••••••"></div>
-<button class="btn btn-primary" onclick="login()" style="width:100%;padding:14px;font-size:15px">Se connecter</button>
-<p style="text-align:center;margin-top:12px;font-size:13px">Pas de compte ? <a href="#" onclick="openRegister()" style="color:var(--primary);font-weight:700">S'inscrire</a></p>
-<button class="btn btn-danger" onclick="closeModal('loginModal')" style="width:100%;margin-top:8px">Fermer</button>
-</div></div>
-
-<!-- MODAL REGISTER -->
-<div class="modal" id="registerModal"><div class="modal-content">
-<h3>📝 Inscription</h3>
-<div class="form-group"><label>Nom *</label><input type="text" id="regNom" placeholder="Votre nom"></div>
-<div class="form-group"><label>Prénom *</label><input type="text" id="regPrenom" placeholder="Votre prénom"></div>
-<div class="form-group"><label>Email *</label><input type="email" id="regEmail" placeholder="votre@email.com"></div>
-<div class="form-group"><label>Téléphone</label><input type="tel" id="regPhone" placeholder="05XXXXXXXX"></div>
-<div class="form-group"><label>Mot de passe *</label><input type="password" id="regPassword" placeholder="Minimum 6 caractères"></div>
-<button class="btn btn-primary" onclick="register()" style="width:100%;padding:14px;font-size:15px">S'inscrire</button>
-<button class="btn btn-danger" onclick="closeModal('registerModal')" style="width:100%;margin-top:8px">Fermer</button>
-</div></div>
-
-<!-- MODAL ADD AD -->
-<div class="modal" id="addAdModal"><div class="modal-content">
-<h3>📢 Déposer une annonce</h3>
-<div class="form-group"><label>Catégorie *</label><select id="adCategorie"></select></div>
-<div class="form-group"><label>Titre *</label><input type="text" id="adTitre" placeholder="Titre de votre annonce"></div>
-<div class="form-group"><label>Description</label><textarea id="adDescription" rows="3" placeholder="Décrivez votre annonce..."></textarea></div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-<div class="form-group"><label>Prix (DA)</label><input type="number" id="adPrix" placeholder="0 = Gratuit"></div>
-<div class="form-group"><label>Téléphone</label><input type="tel" id="adPhone" placeholder="05XXXXXXXX"></div>
-</div>
-<div class="form-group"><label>📸 Photo (optionnel)</label><input type="file" id="adPhoto" accept="image/*" onchange="previewImage()"><div class="image-preview" id="imagePreview"></div></div>
-<button class="btn btn-primary" onclick="createAd()" style="width:100%;padding:14px;font-size:15px">✅ Publier l'annonce</button>
-<button class="btn btn-danger" onclick="closeModal('addAdModal')" style="width:100%;margin-top:8px">Fermer</button>
-</div></div>
-
-<!-- MODAL DETAIL -->
+<div class="modal" id="loginModal"><div class="modal-content"><h3>🔐 Connexion</h3><div class="form-group"><label>Email</label><input type="email" id="loginEmail" placeholder="votre@email.com"></div><div class="form-group"><label>Mot de passe</label><input type="password" id="loginPassword" placeholder="••••••"></div><button class="btn btn-primary" onclick="login()" style="width:100%;padding:14px;font-size:15px">Se connecter</button><p style="text-align:center;margin-top:12px;font-size:13px">Pas de compte ? <a href="#" onclick="openRegister()" style="color:var(--primary);font-weight:700">S'inscrire</a></p><button class="btn btn-danger" onclick="closeModal('loginModal')" style="width:100%;margin-top:8px">Fermer</button></div></div>
+<div class="modal" id="registerModal"><div class="modal-content"><h3>📝 Inscription</h3><div class="form-group"><label>Nom *</label><input type="text" id="regNom" placeholder="Votre nom"></div><div class="form-group"><label>Email *</label><input type="email" id="regEmail" placeholder="votre@email.com"></div><div class="form-group"><label>Téléphone</label><input type="tel" id="regPhone" placeholder="05XXXXXXXX"></div><div class="form-group"><label>Mot de passe *</label><input type="password" id="regPassword" placeholder="Minimum 6 caractères"></div><button class="btn btn-primary" onclick="register()" style="width:100%;padding:14px;font-size:15px">S'inscrire</button><button class="btn btn-danger" onclick="closeModal('registerModal')" style="width:100%;margin-top:8px">Fermer</button></div></div>
+<div class="modal" id="addAdModal"><div class="modal-content"><h3>📢 Déposer une annonce</h3><div class="form-group"><label>Catégorie *</label><select id="adCategorie"></select></div><div class="form-group"><label>Titre *</label><input type="text" id="adTitre" placeholder="Titre de votre annonce"></div><div class="form-group"><label>Description</label><textarea id="adDescription" rows="3" placeholder="Décrivez votre annonce..."></textarea></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div class="form-group"><label>Prix (DA)</label><input type="number" id="adPrix" placeholder="0 = Gratuit"></div><div class="form-group"><label>Téléphone</label><input type="tel" id="adPhone" placeholder="05XXXXXXXX"></div></div><div class="form-group"><label>📸 Photo (optionnel)</label><input type="file" id="adPhoto" accept="image/*" onchange="previewImage()"><div class="image-preview" id="imagePreview"></div></div><button class="btn btn-primary" onclick="createAd()" style="width:100%;padding:14px;font-size:15px">✅ Publier l'annonce</button><button class="btn btn-danger" onclick="closeModal('addAdModal')" style="width:100%;margin-top:8px">Fermer</button></div></div>
 <div class="modal" id="adDetailModal"><div class="modal-content" id="adDetailContent"></div></div>
-
 <div class="toast-container" id="toastContainer"></div>
 
 <script>
-const API_URL='https://script.google.com/macros/s/AKfycbxywtfSmzVJgmuw0szhd-YGbja0Ou4LFOjIJpQv0YIHrCLuKnAfhtYBZmL08VPczYXv/exec';
+// ⚠️ REMPLACEZ PAR VOTRE NOUVELLE URL
+const API_URL='https://script.google.com/macros/s/AKfycbzxtKi8OsKWH665Tx2zvUb9yCEmG7IOKmESe8uzBGHyeWjJ05L-fVa2IXGjM2q_r03U/exec';
 const CATS=[{id:'Immobilier',icon:'🏠',fr:'Immobilier',ar:'عقارات'},{id:'Véhicules',icon:'🚗',fr:'Véhicules',ar:'سيارات'},{id:'Emploi',icon:'💼',fr:'Emploi',ar:'وظائف'},{id:'Services',icon:'🔧',fr:'Services',ar:'خدمات'},{id:'Santé',icon:'🏥',fr:'Santé',ar:'صحة'},{id:'Commerce',icon:'🛍️',fr:'Commerce',ar:'تجارة'},{id:'Divers',icon:'📦',fr:'Divers',ar:'متنوع'}];
+let U=JSON.parse(localStorage.getItem('su'))||null,L=localStorage.getItem('sl')||'fr',T=localStorage.getItem('st')||'light',A=[],F=JSON.parse(localStorage.getItem('sf'))||[],selectedFile=null;
+document.addEventListener('DOMContentLoaded',()=>{document.documentElement.setAttribute('data-theme',T);loadCats();loadAds();updateUI();});
 
-let U=JSON.parse(localStorage.getItem('su'))||null;
-let L=localStorage.getItem('sl')||'fr';
-let T=localStorage.getItem('st')||'light';
-let A=[],F=JSON.parse(localStorage.getItem('sf'))||[],selectedFile=null;
-
-document.addEventListener('DOMContentLoaded',()=>{
-document.documentElement.setAttribute('data-theme',T);
-loadCats();loadAds();updateUI();
-});
-
-// API
-function api(action,params={},method='GET'){
-return new Promise(resolve=>{
-if(method==='POST'){
-fetch(API_URL,{method:'POST',body:JSON.stringify({action,...params})})
-.then(r=>r.json()).then(resolve).catch(e=>{console.error(e);resolve(null);});
-}else{
-let u=new URL(API_URL);u.searchParams.append('action',action);
-Object.keys(params).forEach(k=>u.searchParams.append(k,params[k]));
-fetch(u).then(r=>r.json()).then(resolve).catch(e=>{console.error(e);resolve(null);});
-}
-});
-}
-
-function previewImage(){
-let f=document.getElementById('adPhoto').files[0];
-let p=document.getElementById('imagePreview');
-p.innerHTML='';
-if(f){selectedFile=f;let r=new FileReader();r.onload=function(e){p.innerHTML=`<img src="${e.target.result}" alt="Preview">`;};r.readAsDataURL(f);}
-}
-
-// AUTH
-function login(){
-let e=document.getElementById('loginEmail').value.trim();
-let p=document.getElementById('loginPassword').value;
-if(!e||!p)return showToast('Veuillez remplir tous les champs','error');
-api('login',{email:e,password:p}).then(r=>{
-if(r&&r.success){
-U=r.user;localStorage.setItem('su',JSON.stringify(U));
-closeModal('loginModal');showToast('✅ Connecté avec succès !','success');updateUI();loadAds();
-}else{showToast(r?.error||'Email ou mot de passe incorrect','error');}
-});
-}
-
-function register(){
-let n=document.getElementById('regNom').value.trim();
-let p=document.getElementById('regPrenom').value.trim();
-let e=document.getElementById('regEmail').value.trim();
-let ph=document.getElementById('regPhone').value.trim();
-let pw=document.getElementById('regPassword').value;
-if(!n||!e||!pw)return showToast('Champs obligatoires manquants','error');
-api('register',{nom:n,prenom:p,email:e,phone:ph,password:pw}).then(r=>{
-if(r&&r.success){closeModal('registerModal');showToast('✅ Compte créé ! Connectez-vous','success');openLogin();}
-else{showToast(r?.error||'Erreur','error');}
-});
-}
-
-function logout(){U=null;localStorage.removeItem('su');updateUI();showHome();showToast('👋 Déconnecté','info');}
-
-// ADS
-function loadAds(){
-document.getElementById('adsContainer').innerHTML='<div class="loading"><div class="spinner"></div><p>Chargement...</p></div>';
-api('getAds').then(r=>{
-if(r&&Array.isArray(r)){A=r;displayAds(r);}
-else{document.getElementById('adsContainer').innerHTML='<div class="empty-state"><div class="icon">📭</div>Aucune annonce pour le moment</div>';}
-});
-}
-
-function displayAds(a){
-let c=document.getElementById('adsContainer');
-if(!a||a.length===0)return c.innerHTML='<div class="empty-state"><div class="icon">📭</div>Aucune annonce</div>';
-c.innerHTML=a.map(ad=>{
-let p=Number(ad.Prix)||0,fav=F.includes(ad.ID),img='';
-if(ad.Photos&&ad.Photos.trim()){let imgs=ad.Photos.split(',');if(imgs[0]&&imgs[0].trim())img=`<img src="${imgs[0].trim()}" onerror="this.parentElement.innerHTML='<span class=no-img>📷</span>'">`;}
-if(!img){let icon=(CATS.find(x=>x.id===ad.Categorie)||{icon:'📷'}).icon;img=`<span class="no-img">${icon}</span>`;}
-return`<div class="ad-card" onclick="showDetail('${ad.ID}')"><button class="fav-btn" onclick="event.stopPropagation();toggleFav('${ad.ID}')">${fav?'❤️':'🤍'}</button><div class="ad-image">${img}</div><div class="ad-content"><div class="ad-title">${ad.Titre||'Sans titre'}</div><div class="ad-price">${p>0?p.toLocaleString('fr-DZ')+' DA':'Gratuit'}</div><div class="ad-loc">📍 ${ad.GPS||'Misserghine'}</div><div class="ad-date">📅 ${ad.DatePub?new Date(ad.DatePub).toLocaleDateString('fr-DZ'):''}</div></div></div>`;
-}).join('');
-}
-
-function showDetail(id){
-let ad=A.find(a=>a.ID===id);if(!ad)return;
-api('incrementViews',{adID:id});
-let p=Number(ad.Prix)||0,imgs='';
-if(ad.Photos&&ad.Photos.trim()){let im=ad.Photos.split(',').filter(ph=>ph.trim());if(im.length)imgs=im.length===1?`<img src="${im[0]}" class="detail-img">`:'<div class="detail-imgs">'+im.map(ph=>`<img src="${ph}">`).join('')+'</div>';}
-document.getElementById('adDetailContent').innerHTML=`
-<h3 style="margin-bottom:12px">${ad.Titre||'Sans titre'}</h3>
-${imgs}
-<div style="font-size:24px;color:var(--primary);font-weight:800;margin:12px 0">💰 ${p>0?p.toLocaleString('fr-DZ')+' DA':'Gratuit'}</div>
-<p style="margin:6px 0;font-size:14px"><strong>📂</strong> ${ad.Categorie} | <strong>📍</strong> ${ad.GPS||'Misserghine'} | <strong>👁️</strong> ${ad.Vues||0} vues</p>
-<p style="margin:6px 0;font-size:14px"><strong>📝</strong> ${ad.Description||'Aucune description'}</p>
-<p style="margin:6px 0;font-size:14px"><strong>📞</strong> <a href="tel:${ad.Phone}" style="color:var(--primary);font-weight:700">${ad.Phone||'Non renseigné'}</a></p>
-<p style="font-size:11px;color:#999">📅 Publié le ${ad.DatePub?new Date(ad.DatePub).toLocaleDateString('fr-DZ'):''}</p>
-<button class="btn btn-danger" onclick="closeModal('adDetailModal')" style="width:100%;margin-top:12px">Fermer</button>`;
-document.getElementById('adDetailModal').classList.add('active');
-}
-
-async function createAd(){
-if(!U)return closeModal('addAdModal'),openLogin();
-let c=document.getElementById('adCategorie').value;
-let t=document.getElementById('adTitre').value.trim();
-let d=document.getElementById('adDescription').value.trim();
-let p=document.getElementById('adPrix').value||0;
-let ph=document.getElementById('adPhone').value.trim();
-if(!c||!t)return showToast('Catégorie et titre obligatoires','error');
-
-let photoURL='';
-if(selectedFile){
-showToast('📸 Upload image...','info');
-let reader=new FileReader();
-reader.readAsDataURL(selectedFile);
-await new Promise(r=>{reader.onload=r;});
-let base64=reader.result;
-let uploadRes=await api('uploadImage',{image:base64},'POST');
-if(uploadRes&&uploadRes.success){photoURL=uploadRes.url;showToast('✅ Image uploadée!','success');}
-else{showToast('❌ Échec upload, annonce publiée sans photo','error');}
-}
-
-let result=await api('createAd',{userID:U.ID,categorie:c,titre:t,description:d,prix:p,phone:ph,photos:photoURL});
-if(result&&result.success){
-closeModal('addAdModal');selectedFile=null;
-document.getElementById('imagePreview').innerHTML='';document.getElementById('adPhoto').value='';
-document.getElementById('adTitre').value='';document.getElementById('adDescription').value='';document.getElementById('adPrix').value='';
-showToast('🎉 Annonce publiée!','success');loadAds();
-}else{showToast(result?.error||'Erreur','error');}
-}
-
-function searchAds(){
-document.getElementById('adsContainer').innerHTML='<div class="loading"><div class="spinner"></div></div>';
-api('searchAds',{query:document.getElementById('searchInput').value.trim(),categorie:document.getElementById('searchCategory').value}).then(r=>{
-if(r&&Array.isArray(r)){A=r;displayAds(r);}
-else{document.getElementById('adsContainer').innerHTML='<div class="empty-state"><div class="icon">🔍</div>Aucun résultat</div>';}
-});
-}
-function showMyAds(){if(!U)return showToast('Connectez-vous','error');document.getElementById('adsContainer').innerHTML='<div class="loading"><div class="spinner"></div></div>';api('getUserAds',{userID:U.ID}).then(r=>{if(r&&Array.isArray(r)){A=r;displayAds(r);}else{document.getElementById('adsContainer').innerHTML='<div class="empty-state"><div class="icon">📋</div>Pas d\'annonces</div>';}});}
+function api(a,p={},m='GET'){return new Promise(r=>{if(m==='POST'){fetch(API_URL,{method:'POST',body:JSON.stringify({action:a,...p})}).then(x=>x.json()).then(r).catch(()=>r(null));}else{let u=new URL(API_URL);u.searchParams.append('action',a);Object.keys(p).forEach(k=>u.searchParams.append(k,p[k]));fetch(u).then(x=>x.json()).then(r).catch(()=>r(null));}});}
+function previewImage(){let f=document.getElementById('adPhoto').files[0],p=document.getElementById('imagePreview');p.innerHTML='';if(f){selectedFile=f;let r=new FileReader();r.onload=function(e){p.innerHTML=`<img src="${e.target.result}" alt="Preview">`;};r.readAsDataURL(f);}}
+function login(){let e=document.getElementById('loginEmail').value.trim(),p=document.getElementById('loginPassword').value;if(!e||!p)return showToast('Champs requis','error');api('login',{email:e,password:p}).then(r=>{if(r&&r.success){U=r.user;localStorage.setItem('su',JSON.stringify(U));closeModal('loginModal');showToast('✅ Connecté!','success');updateUI();loadAds();}else{showToast(r?.error||'Erreur','error');}});}
+function register(){let n=document.getElementById('regNom').value.trim(),e=document.getElementById('regEmail').value.trim(),ph=document.getElementById('regPhone').value.trim(),pw=document.getElementById('regPassword').value;if(!n||!e||!pw)return showToast('Champs requis','error');api('register',{nom:n,email:e,phone:ph,password:pw}).then(r=>{if(r&&r.success){closeModal('registerModal');showToast('✅ Compte créé!','success');openLogin();}else{showToast(r?.error||'Erreur','error');}});}
+function logout(){U=null;localStorage.removeItem('su');updateUI();showHome();showToast('Déconnecté','info');}
+function loadAds(){document.getElementById('adsContainer').innerHTML='<div class="loading"><div class="spinner"></div></div>';api('getAds').then(r=>{if(r&&Array.isArray(r)){A=r;displayAds(r);}else{document.getElementById('adsContainer').innerHTML='<div class="empty-state">📭 Aucune annonce</div>';}});}
+function displayAds(a){let c=document.getElementById('adsContainer');if(!a||a.length===0)return c.innerHTML='<div class="empty-state">📭 Aucune annonce</div>';c.innerHTML=a.map(ad=>{let p=Number(ad.Prix)||0,fav=F.includes(ad.ID),img='';if(ad.Photos&&ad.Photos.trim()){let imgs=ad.Photos.split(',');if(imgs[0]&&imgs[0].trim())img=`<img src="${imgs[0].trim()}" onerror="this.parentElement.innerHTML='<span class=no-img>📷</span>'">`;}if(!img){let icon=(CATS.find(x=>x.id===ad.Categorie)||{icon:'📷'}).icon;img=`<span class="no-img">${icon}</span>`;}return`<div class="ad-card" onclick="showDetail('${ad.ID}')"><button class="fav-btn" onclick="event.stopPropagation();toggleFav('${ad.ID}')">${fav?'❤️':'🤍'}</button><div class="ad-image">${img}</div><div class="ad-content"><div class="ad-title">${ad.Titre||'Sans titre'}</div><div class="ad-price">${p>0?p.toLocaleString('fr-DZ')+' DA':'Gratuit'}</div><div class="ad-loc">📍 ${ad.GPS||'Misserghine'}</div><div class="ad-date">📅 ${ad.DatePub?new Date(ad.DatePub).toLocaleDateString('fr-DZ'):''}</div></div></div>`;}).join('');}
+function showDetail(id){let ad=A.find(a=>a.ID===id);if(!ad)return;api('incrementViews',{adID:id});let p=Number(ad.Prix)||0,imgs='';if(ad.Photos&&ad.Photos.trim()){let im=ad.Photos.split(',').filter(ph=>ph.trim());if(im.length)imgs=im.length===1?`<img src="${im[0]}" class="detail-img">`:'<div class="detail-imgs">'+im.map(ph=>`<img src="${ph}">`).join('')+'</div>';}document.getElementById('adDetailContent').innerHTML=`<h3>${ad.Titre||'Sans titre'}</h3>${imgs}<div style="font-size:24px;color:var(--primary);font-weight:800;margin:12px 0">💰 ${p>0?p.toLocaleString('fr-DZ')+' DA':'Gratuit'}</div><p style="margin:6px 0;font-size:14px">📂 ${ad.Categorie} | 📍 ${ad.GPS||'Misserghine'} | 👁️ ${ad.Vues||0} vues</p><p style="margin:6px 0;font-size:14px">📝 ${ad.Description||'Aucune'}</p><p style="margin:6px 0;font-size:14px">📞 <a href="tel:${ad.Phone}" style="color:var(--primary);font-weight:700">${ad.Phone||'N/A'}</a></p><button class="btn btn-danger" onclick="closeModal('adDetailModal')" style="width:100%;margin-top:12px">Fermer</button>`;document.getElementById('adDetailModal').classList.add('active');}
+async function createAd(){if(!U)return closeModal('addAdModal'),openLogin();let c=document.getElementById('adCategorie').value,t=document.getElementById('adTitre').value.trim(),d=document.getElementById('adDescription').value.trim(),p=document.getElementById('adPrix').value||0,ph=document.getElementById('adPhone').value.trim();if(!c||!t)return showToast('Catégorie et titre requis','error');let photoURL='';if(selectedFile){showToast('📸 Upload...','info');let reader=new FileReader();reader.readAsDataURL(selectedFile);await new Promise(r=>{reader.onload=r;});let base64=reader.result;let uploadRes=await api('uploadImage',{image:base64},'POST');if(uploadRes&&uploadRes.success){photoURL=uploadRes.url;showToast('✅ Image uploadée!','success');}}let result=await api('createAd',{userID:U.ID,categorie:c,titre:t,description:d,prix:p,phone:ph,photos:photoURL});if(result&&result.success){closeModal('addAdModal');selectedFile=null;document.getElementById('imagePreview').innerHTML='';document.getElementById('adPhoto').value='';document.getElementById('adTitre').value='';showToast('🎉 Publié!','success');loadAds();}else{showToast(result?.error||'Erreur','error');}}
+function searchAds(){document.getElementById('adsContainer').innerHTML='<div class="loading"><div class="spinner"></div></div>';api('searchAds',{query:document.getElementById('searchInput').value.trim(),categorie:document.getElementById('searchCategory').value}).then(r=>{if(r&&Array.isArray(r)){A=r;displayAds(r);}else{document.getElementById('adsContainer').innerHTML='<div class="empty-state">🔍 Aucun résultat</div>';}});}
+function showMyAds(){if(!U)return showToast('Connectez-vous','error');document.getElementById('adsContainer').innerHTML='<div class="loading"><div class="spinner"></div></div>';api('getUserAds',{userID:U.ID}).then(r=>{if(r&&Array.isArray(r)){A=r;displayAds(r);}else{document.getElementById('adsContainer').innerHTML='<div class="empty-state">📋 Pas d\'annonces</div>';}});}
 function toggleFav(id){if(!U)return showToast('Connectez-vous','error');api('toggleFavorite',{userID:U.ID,adID:id}).then(r=>{if(r&&r.success){r.action==='added'?F.push(id):F=F.filter(x=>x!==id);localStorage.setItem('sf',JSON.stringify(F));displayAds(A);}});}
-function showFavorites(){if(!U)return showToast('Connectez-vous','error');document.getElementById('adsContainer').innerHTML='<div class="loading"><div class="spinner"></div></div>';api('getFavorites',{userID:U.ID}).then(r=>{if(r&&Array.isArray(r)){A=r;displayAds(r);}else{document.getElementById('adsContainer').innerHTML='<div class="empty-state"><div class="icon">❤️</div>Pas de favoris</div>';}});}
-
-// UI
-function updateUI(){let l=document.getElementById('btnLogin'),o=document.getElementById('btnLogout'),a=document.getElementById('btnAddAd');if(U){l.classList.add('hidden');o.classList.remove('hidden');a.style.display='inline-flex';}else{l.classList.remove('hidden');o.classList.add('hidden');}}
-function loadCats(){let g=document.getElementById('searchCategory'),a=document.getElementById('adCategorie'),cats=CATS.map(c=>({id:c.id,icon:c.icon,name:L==='ar'?c.ar:c.fr})),o='<option value="">📂 Toutes</option>'+cats.map(c=>`<option value="${c.id}">${c.icon} ${c.name}</option>`).join('');g.innerHTML=o;a.innerHTML='<option value="">-- Choisir --</option>'+cats.map(c=>`<option value="${c.id}">${c.icon} ${c.name}</option>`).join('');}
-function showHome(){loadAds();}
-function toggleTheme(){T=T==='light'?'dark':'light';localStorage.setItem('st',T);document.documentElement.setAttribute('data-theme',T);showToast(T==='dark'?'🌙 Mode sombre':'☀️ Mode clair','info');}
-function switchLang(l){L=l;localStorage.setItem('sl',l);document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';loadCats();showToast(l==='ar'?'🇩🇿 العربية':'🇫🇷 Français','info');}
-function openLogin(){document.getElementById('loginModal').classList.add('active');}
-function openRegister(){closeModal('loginModal');document.getElementById('registerModal').classList.add('active');}
-function openAddAd(){if(U){document.getElementById('addAdModal').classList.add('active');}else{openLogin();}}
-function closeModal(id){document.getElementById(id).classList.remove('active');}
-function showToast(m,t='info'){let c=document.getElementById('toastContainer'),x=document.createElement('div');x.className=`toast toast-${t}`;x.textContent=m;c.appendChild(x);setTimeout(()=>{x.style.opacity='0';setTimeout(()=>x.remove(),300)},3000);}
-window.onclick=function(e){if(e.target.classList.contains('modal'))e.target.classList.remove('active');}
-console.log('🚀 SOGE ZABANA RH - Design Moderne - Prêt');
-</script>
-</body>
-</html>
+function showFavorites(){if(!U)return showToast('Connectez-vous','error');document.getElementById('adsContainer').innerHTML='<div class="loading"><div class="spinner"></div></div>';api('getFavorites',{userID:U.ID}).then(r=>{if(r&&Array.isArray(r)){A=r;displayAds(r);}else{document.getElementById('adsContainer').innerHTML='<div class="empty-state">❤️ Pas de favoris</div>';}});}
+function updateUI(){let l=document.getElementById('btnLogin'),o=document.getElementById('btnLogout'),a=document.getElementById('btnAddAd');if(U){l.classList.add('hidden');o.classList.remove('hidden');a.style.display='inline-flex';}else{l.classList.remove('hidden');o.classList.add('hidden');
